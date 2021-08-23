@@ -9,3 +9,4 @@ class Adresses extends Model
 {
     use HasFactory;
 }
+
