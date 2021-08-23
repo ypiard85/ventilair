@@ -15,6 +15,13 @@ class CreateAdressesTable extends Migration
     {
         Schema::create('adresses', function (Blueprint $table) {
             $table->id();
+            $table->integer('numero')->nullable();
+            $table->string('rue', '50');
+            $table->char('code_postal', '5');
+            $table->string('ville', '50');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->boolean('default');
             $table->timestamps();
 
             $table->engine = 'InnoDB';
