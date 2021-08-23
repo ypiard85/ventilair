@@ -15,6 +15,10 @@ class CreatePromoArticlesTable extends Migration
     {
         Schema::create('promo_articles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('produit_id');
+            $table->foreign('produit_id')->references('id')->on('produits')->onDelete('cascade');
+            $table->unsignedInteger('promo_id');
+            $table->foreign('promo_id')->references('id')->on('promos')->onDelete('cascade');
             $table->timestamps();
 
             $table->engine = 'InnoDB';
