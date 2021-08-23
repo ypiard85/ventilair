@@ -18,8 +18,7 @@ class CreateImagesTable extends Migration
             $table->timestamps();
             $table->string('name', '100');
             $table->unsignedInteger('produit_id');
-            $table->foreign('produit_id')->references('id')->on('produits')->onDelete('cascade');
-
+            $table->forei
         });
     }
 
