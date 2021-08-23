@@ -16,6 +16,11 @@ class CreateCommandesArticlesTable extends Migration
         Schema::create('commandes_articles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedInteger('produit_id');
+            $table->foreign('produit_id')->references('id')->on('produits')->onDelete('cascade');
+            $table->unsignedInteger('commande_id');
+            $table->foreign('commande_id')->references('id')->on('commandes')->onDelete('cascade');
+            $table->integer('quantite');
         });
     }
 
