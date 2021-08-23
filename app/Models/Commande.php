@@ -3,11 +3,10 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Produit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Favoris extends Model
+class Commande extends Model
 {
     use HasFactory;
 
@@ -16,8 +15,9 @@ class Favoris extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function produit()
+    public function commandeArticle()
     {
-        return $this->belongsTo(Produit::class);
+        return $this->hasMany(CommandeArticle::class);
     }
+
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Promo_articles extends Model
+class Filtre_poids extends Model
 {
     use HasFactory;
 }

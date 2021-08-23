@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Roles;
+use App\Models\Adresse;
+use App\Models\Favoris;
+use App\Models\Commandes;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -40,4 +44,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+    {
+        return $this->belongsTo(Roles::class);
+    }
+
+    public function commandes()
+    {
+        return $this->hasMany(Commandes::class);
+    }
+
+    public function favoris()
+    {
+        return $this->hasMany(Favoris::class);
+    }
+
+    public function note()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function adresse()
+    {
+        return $this->hasMany(Adresse::class);
+    }
+
 }

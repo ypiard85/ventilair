@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateImageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,17 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('image', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('20');
+            $table->string('name', '100');
+            $table->unsignedInteger('produit_id');
+            $table->foreign('produit_id')->references('id')->on('produit')->onDelete('cascade');
+
+            $table->engine = 'InnoDB';
+
         });
+
     }
 
     /**
@@ -27,6 +33,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('images');
     }
 }

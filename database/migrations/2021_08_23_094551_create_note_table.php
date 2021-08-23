@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFavorisTable extends Migration
+class CreateNoteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateFavorisTable extends Migration
      */
     public function up()
     {
-        Schema::create('favoris', function (Blueprint $table) {
-
+        Schema::create('note', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
             $table->unsignedInteger('produit_id');
             $table->foreign('produit_id')->references('id')->on('produit')->onDelete('cascade');
+            $table->integer('note');
+            $table->text('commentaire')->nullable();
+            $table->timestamps();
 
             $table->engine = 'InnoDB';
-
 
         });
     }
@@ -35,6 +35,6 @@ class CreateFavorisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favoris');
+        Schema::dropIfExists('notes');
     }
 }
