@@ -16,6 +16,9 @@ class CreateAdressesTable extends Migration
         Schema::create('adresses', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
+
         });
     }
 

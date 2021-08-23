@@ -19,7 +19,10 @@ class CreateCommandesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('numero', '15');
-            $table->double('price');
+            $table->float('price', '6', '2');
+
+            $table->engine = 'InnoDB';
+
         });
     }
 

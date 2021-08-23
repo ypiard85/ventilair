@@ -21,6 +21,9 @@ class CreateCommandesArticlesTable extends Migration
             $table->unsignedInteger('commande_id');
             $table->foreign('commande_id')->references('id')->on('commandes')->onDelete('cascade');
             $table->integer('quantite');
+
+            $table->engine = 'InnoDB';
+
         });
     }
 

@@ -24,6 +24,9 @@ class CreateUsersTable extends Migration
             $table->integer('roles_id');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
+
         });
     }
 

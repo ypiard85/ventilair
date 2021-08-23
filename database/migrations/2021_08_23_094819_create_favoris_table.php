@@ -22,6 +22,9 @@ class CreateFavorisTable extends Migration
             $table->unsignedInteger('produit_id');
             $table->foreign('produit_id')->references('id')->on('produits')->onDelete('cascade');
 
+            $table->engine = 'InnoDB';
+
+
         });
     }
 

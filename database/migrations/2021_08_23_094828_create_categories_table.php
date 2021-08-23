@@ -17,6 +17,9 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nom', 50);
+
+            $table->engine = 'InnoDB';
+
         });
     }
 

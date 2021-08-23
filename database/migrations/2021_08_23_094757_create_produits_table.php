@@ -32,6 +32,9 @@ class CreateProduitsTable extends Migration
             $table->foreign('filtre_poids_id')->id('id')->on('filtre_poids')->onDelete('cascade');
             $table->unsignedInteger('filtre_tailles_id');
             $table->foreign('filtre_tailles_id')->id('id')->on('filtre_tailles')->onDelete('cascade');
+
+            $table->engine = 'InnoDB';
+
         });
     }
 

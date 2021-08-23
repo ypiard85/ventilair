@@ -16,6 +16,9 @@ class CreatePromoArticlesTable extends Migration
         Schema::create('promo_articles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
+
         });
     }
 

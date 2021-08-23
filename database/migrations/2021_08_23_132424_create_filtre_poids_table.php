@@ -15,7 +15,11 @@ class CreateFiltrePoidsTable extends Migration
     {
         Schema::create('filtre_poids', function (Blueprint $table) {
             $table->id();
+            $table->string('intervalle', '20');
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
+
         });
     }
 
