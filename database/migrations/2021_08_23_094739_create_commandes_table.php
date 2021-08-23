@@ -16,6 +16,10 @@ class CreateCommandesTable extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('numero', '15');
+            $table->double('price');
         });
     }
 
