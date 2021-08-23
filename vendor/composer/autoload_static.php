@@ -558,6 +558,8 @@ class ComposerStaticInit5fb8fd5afa99cf852d8ed9d71b94d228
         'App\\Models\\Roles' => __DIR__ . '/../..' . '/app/Models/Roles.php',
         'App\\Models\\Types' => __DIR__ . '/../..' . '/app/Models/Types.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\filtre_poids' => __DIR__ . '/../..' . '/app/Models/filtre_poids.php',
+        'App\\Models\\filtre_tailles' => __DIR__ . '/../..' . '/app/Models/filtre_tailles.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
