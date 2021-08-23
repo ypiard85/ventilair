@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommandesArticlesTable extends Migration
+class CreateRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateCommandesArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('commandes_articles', function (Blueprint $table) {
+        Schema::create('role', function (Blueprint $table) {
             $table->id();
+            $table->string('niveau', '20');
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
+
         });
     }
 
@@ -26,6 +30,6 @@ class CreateCommandesArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('commandes_articles');
+        Schema::dropIfExists('roles');
     }
 }

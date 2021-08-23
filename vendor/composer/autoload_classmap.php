@@ -38,6 +38,8 @@ return array(
     'App\\Models\\Roles' => $baseDir . '/app/Models/Roles.php',
     'App\\Models\\Types' => $baseDir . '/app/Models/Types.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\filtre_poids' => $baseDir . '/app/Models/filtre_poids.php',
+    'App\\Models\\filtre_tailles' => $baseDir . '/app/Models/filtre_tailles.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

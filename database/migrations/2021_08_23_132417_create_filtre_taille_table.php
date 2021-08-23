@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommandesTable extends Migration
+class CreateFiltreTailleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateCommandesTable extends Migration
      */
     public function up()
     {
-        Schema::create('commandes', function (Blueprint $table) {
+        Schema::create('filtre_taille', function (Blueprint $table) {
             $table->id();
+            $table->string('intervalle', '20');
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
+
         });
     }
 
@@ -26,6 +30,6 @@ class CreateCommandesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('commandes');
+        Schema::dropIfExists('filtre_tailles');
     }
 }

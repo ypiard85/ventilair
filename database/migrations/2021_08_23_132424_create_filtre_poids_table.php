@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePromosTable extends Migration
+class CreateFiltrePoidsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreatePromosTable extends Migration
      */
     public function up()
     {
-        Schema::create('promos', function (Blueprint $table) {
+        Schema::create('filtre_poids', function (Blueprint $table) {
             $table->id();
+            $table->string('intervalle', '20');
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
         });
     }
 
@@ -26,6 +29,6 @@ class CreatePromosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promos');
+        Schema::dropIfExists('filtre_poids');
     }
 }
