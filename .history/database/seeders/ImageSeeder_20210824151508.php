@@ -14,24 +14,21 @@ class ImageSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 60; $i++) {
+        for ($i = 0; $i < 25; $i++) {
 
             DB::table('images')->insert([
                 'name' => 'image1',
-                'created_at' => now(),
-                'produit_id' => rand(1, 25)
+                'produit_id' => rand(1, $i)
             ]);
 
             DB::table('images')->insert([
                 'name' => 'image2',
-                'created_at' => now(),
-                'produit_id' => rand(1, 25)
+                'produit_id' => rand(1,$i)
             ]);
 
             DB::table('images')->insert([
                 'name' => 'image3',
-                'created_at' => now(),
-                'produit_id' => rand(1, 25)
+                'produit_id' => rand(1,$i)
             ]);
         }
     }

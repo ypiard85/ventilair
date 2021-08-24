@@ -18,19 +18,17 @@ class ImageSeeder extends Seeder
 
             DB::table('images')->insert([
                 'name' => 'image1',
-                'created_at' => now(),
+                'created_at' => 
                 'produit_id' => rand(1, 25)
             ]);
 
             DB::table('images')->insert([
                 'name' => 'image2',
-                'created_at' => now(),
                 'produit_id' => rand(1, 25)
             ]);
 
             DB::table('images')->insert([
                 'name' => 'image3',
-                'created_at' => now(),
                 'produit_id' => rand(1, 25)
             ]);
         }
