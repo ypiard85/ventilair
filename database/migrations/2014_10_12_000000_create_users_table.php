@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,20 @@ class CreateUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
-            $table->id();
-            $table->engine = 'InnoDB';
-            $table->string('pseudo');
+        Schema::create('users', function (Blueprint $table) {
+            $table->bigIncrements('id');;
+            $table->string('pseudo')->unique();
             $table->string('nom');
             $table->string('prenom');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('roles_id');
+            $table->unsignedBigInteger('role_id')->default(1);
+            $table->foreign('role_id')->references('id')->on('roles');
+            
             $table->rememberToken();
             $table->timestamps();
 
-            $table->engine = 'InnoDB';
 
         });
     }

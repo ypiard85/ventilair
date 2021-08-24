@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommandeArticleTable extends Migration
+class CreateCommandeArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateCommandeArticleTable extends Migration
      */
     public function up()
     {
-        Schema::create('commande_article', function (Blueprint $table) {
-            $table->id();
+        Schema::create('commande_articles', function (Blueprint $table) {
+            $table->primary(['produit_id', 'commande_id']) ;
             $table->timestamps();
-            $table->unsignedInteger('produit_id');
-            $table->foreign('produit_id')->references('id')->on('produit')->onDelete('cascade');
-            $table->unsignedInteger('commande_id');
-            $table->foreign('commande_id')->references('id')->on('commande')->onDelete('cascade');
+            $table->unsignedBigInteger('produit_id');
+            $table->foreign('produit_id')->references('id')->on('produits')->onDelete('cascade');
+            $table->unsignedBigInteger('commande_id');
+            $table->foreign('commande_id')->references('id')->on('commandes');
             $table->integer('quantite');
 
-            $table->engine = 'InnoDB';
 
         });
     }

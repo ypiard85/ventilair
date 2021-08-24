@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNoteTable extends Migration
+class CreateNotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateNoteTable extends Migration
      */
     public function up()
     {
-        Schema::create('note', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
-            $table->unsignedInteger('produit_id');
-            $table->foreign('produit_id')->references('id')->on('produit')->onDelete('cascade');
+        Schema::create('notes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('produit_id');
+            $table->foreign('produit_id')->references('id')->on('produits')->onDelete('cascade');
             $table->integer('note');
             $table->text('commentaire')->nullable();
             $table->timestamps();
 
-            $table->engine = 'InnoDB';
 
         });
     }

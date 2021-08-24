@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFiltrePoidsTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateFiltrePoidsTable extends Migration
      */
     public function up()
     {
-        Schema::create('filtre_poids', function (Blueprint $table) {
-            $table->id();
-            $table->string('intervalle', '20');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->bigIncrements('id');;
+            $table->string('niveau', '20');
             $table->timestamps();
 
-            $table->engine = 'InnoDB';
+
         });
     }
 
@@ -29,6 +29,6 @@ class CreateFiltrePoidsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('filtre_poids');
+        Schema::dropIfExists('roles');
     }
 }
