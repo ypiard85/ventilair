@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RoleSeeder extends Seeder
+class CategorieSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,13 +14,11 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
+        $nom = ['Ventilateurs plafond', 'Déstratificateur d'air');
 
-        DB::table('roles')->insert([
-            'niveau' => 'user',
-        ]);
-    
-        DB::table('roles')->insert([
-            'niveau' => 'admin',
+        for($i = 0 ; $i <=  )
+        DB::table('categories')->insert([
+            'nom' =>
         ]);
 
     }

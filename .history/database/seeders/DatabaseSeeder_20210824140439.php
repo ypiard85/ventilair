@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
-use Database\Seeders\TypeSeeder;
-use Database\Seeders\ImageSeeder;
 use Database\Seeders\CategorieSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,7 +17,5 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([RoleSeeder::class]);
         $this->call([CategorieSeeder::class]);
-        $this->call([TypeSeeder::class]);
-        //$this->call([ImageSeeder::class]);
     }
 }

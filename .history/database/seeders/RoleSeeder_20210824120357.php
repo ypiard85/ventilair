@@ -14,14 +14,13 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-
+        
         DB::table('roles')->insert([
             'niveau' => 'user',
         ]);
-    
+
         DB::table('roles')->insert([
             'niveau' => 'admin',
         ]);
-
     }
 }

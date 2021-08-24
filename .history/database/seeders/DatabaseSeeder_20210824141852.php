@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
-use Database\Seeders\TypeSeeder;
 use Database\Seeders\ImageSeeder;
 use Database\Seeders\CategorieSeeder;
 
