@@ -14,5 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([RoleSeeder::class]);
+        $this->call([PoidsSeeder::class]);
+        $this->call([TaillesSeeder::class]);
+        $this->call([PromosSeeder::class]);
     }
 }
