@@ -5,8 +5,14 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RoleSeeder extends Seeder
+class CategorieSeeder extends Seeder
 {
+    private $nom[];
+
+    public function __construct($nom){
+        $nom = array('fdài', 'ifuury');
+    }
+
     /**
      * Run the database seeds.
      *
@@ -15,12 +21,10 @@ class RoleSeeder extends Seeder
     public function run()
     {
 
-        DB::table('roles')->insert([
-            'niveau' => 'user',
-        ]);
-    
-        DB::table('roles')->insert([
-            'niveau' => 'admin',
+
+
+        DB::table('categories')->insert([
+            'nom' => 'vr',
         ]);
 
     }
