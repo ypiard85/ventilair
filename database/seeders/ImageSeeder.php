@@ -14,19 +14,11 @@ class ImageSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('images')->insert([
-            'name' => 'image1',
-            'produit_id' => 1
-        ]);
-
-        DB::table('images')->insert([
-            'name' => 'image2',
-            'produit_id' => 2
-        ]);
-
-        DB::table('images')->insert([
-            'name' => 'image3',
-            'produit_id' => 3
-        ]);
+        for ($i = 0; $i < 25; $i++) {
+            DB::table('images')->insert([
+                'name' => 'image' . rand(1, 4),
+                'produit_id' => $i + 1,
+            ]);
+        }
     }
 }
