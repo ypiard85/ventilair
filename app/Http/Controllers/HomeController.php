@@ -42,8 +42,6 @@ class HomeController extends Controller
             ->get()
         ;
 
-        dd($promos);
-
 
 
         return view('home', [
