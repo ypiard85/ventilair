@@ -40,7 +40,7 @@ class PromoProduitsSeeder extends Seeder
 
         DB::table('promo_produits')->insert([
             'produit_id' => 5,
-            'promo_id' => 2,
+            'promo_id' => 1,
             'created_at' => now()
         ]);
 
@@ -51,13 +51,13 @@ class PromoProduitsSeeder extends Seeder
         ]);
 
         DB::table('promo_produits')->insert([
-            'produit_id' => 4,
+            'produit_id' => 7,
             'promo_id' => 2,
             'created_at' => now()
         ]);
 
         DB::table('promo_produits')->insert([
-            'produit_id' => 5,
+            'produit_id' => 8,
             'promo_id' => 2,
             'created_at' => now()
         ]);

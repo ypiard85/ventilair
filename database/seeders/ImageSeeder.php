@@ -16,7 +16,7 @@ class ImageSeeder extends Seeder
     {
         for ($i = 0; $i < 25; $i++) {
             DB::table('images')->insert([
-                'name' => 'image' . rand(1, 4),
+                'name' => 'image' . rand(1, 4) . '.jpg',
                 'produit_id' => $i + 1,
             ]);
         }

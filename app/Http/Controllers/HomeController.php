@@ -36,17 +36,19 @@ class HomeController extends Controller
 
         //récupération de la promo en cours
         $now = new Carbon();
-        $promos = Promo::with('produits')
+        $promos = Promo::with(['produits' => function($query){
+            $query->limit(3);
+        }])
             ->where('date_debut', '<=', $now->now())
-            ->where('date_fin', '>=', $now->now() )
-            ->get()
-        ;
+            ->where('date_fin', '>=', $now->now())->get()
+            ;
 
-
+        $promos = $promos[0];
 
         return view('home', [
             'categories' => $categories,
-            'promos' => $promos
+            'promos' => $promos,
+
         ]);
 
     }

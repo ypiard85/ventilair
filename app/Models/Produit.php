@@ -19,6 +19,8 @@ class Produit extends Model
 {
     use HasFactory;
 
+    protected $with = ['images'];
+
     protected $fillable = [
         'nom',
         'description',
