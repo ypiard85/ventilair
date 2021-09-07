@@ -7,6 +7,7 @@ use Database\Seeders\RoleSeeder;
 use Database\Seeders\TypeSeeder;
 use Database\Seeders\ImageSeeder;
 use Database\Seeders\CategorieSeeder;
+use Database\Seeders\PromoProduitsSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
             CategorieSeeder::class,
             TypeSeeder::class,
             ProduitsSeeder::class,
+            PromoProduitsSeeder::class,
             ImageSeeder::class,
             UsersSeeder::class,
             CommandesSeeder::class,

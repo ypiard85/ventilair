@@ -2,11 +2,9 @@
 
 @section('content')
 <div class="container">
-
-    @foreach($categories as $categorie)
-        {{ $categorie->produits[0]->categorie_id }}
+    @foreach($promos as $promo )
+        <p>{{ $promo->date_fin | diff }}</p>
     @endforeach
-
 </div>
 
 @endsection

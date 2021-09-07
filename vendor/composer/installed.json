@@ -2558,17 +2558,17 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.52.0",
-            "version_normalized": "2.52.0.0",
+            "version": "2.53.1",
+            "version_normalized": "2.53.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "369c0e2737c56a0f39c946dd261855255a6fccbe"
+                "reference": "f4655858a784988f880c1b8c7feabbf02dfdf045"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/369c0e2737c56a0f39c946dd261855255a6fccbe",
-                "reference": "369c0e2737c56a0f39c946dd261855255a6fccbe",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/f4655858a784988f880c1b8c7feabbf02dfdf045",
+                "reference": "f4655858a784988f880c1b8c7feabbf02dfdf045",
                 "shasum": ""
             },
             "require": {
@@ -2580,7 +2580,7 @@
             },
             "require-dev": {
                 "doctrine/orm": "^2.7",
-                "friendsofphp/php-cs-fixer": "^2.14 || ^3.0",
+                "friendsofphp/php-cs-fixer": "^3.0",
                 "kylekatarnls/multi-tester": "^2.0",
                 "phpmd/phpmd": "^2.9",
                 "phpstan/extension-installer": "^1.0",
@@ -2588,7 +2588,7 @@
                 "phpunit/phpunit": "^7.5.20 || ^8.5.14",
                 "squizlabs/php_codesniffer": "^3.4"
             },
-            "time": "2021-08-14T19:10:52+00:00",
+            "time": "2021-09-06T09:29:23+00:00",
             "bin": [
                 "bin/carbon"
             ],
@@ -8407,54 +8407,5 @@
             "install-path": "../webmozart/assert"
         }
     ],
-<<<<<<< HEAD
     "dev": true
-=======
-    "dev": true,
-    "dev-package-names": [
-        "barryvdh/laravel-debugbar",
-        "doctrine/instantiator",
-        "facade/flare-client-php",
-        "facade/ignition",
-        "facade/ignition-contracts",
-        "fakerphp/faker",
-        "filp/whoops",
-        "hamcrest/hamcrest-php",
-        "laravel/sail",
-        "maximebf/debugbar",
-        "mockery/mockery",
-        "myclabs/deep-copy",
-        "nunomaduro/collision",
-        "phar-io/manifest",
-        "phar-io/version",
-        "phpdocumentor/reflection-common",
-        "phpdocumentor/reflection-docblock",
-        "phpdocumentor/type-resolver",
-        "phpspec/prophecy",
-        "phpunit/php-code-coverage",
-        "phpunit/php-file-iterator",
-        "phpunit/php-invoker",
-        "phpunit/php-text-template",
-        "phpunit/php-timer",
-        "phpunit/phpunit",
-        "sebastian/cli-parser",
-        "sebastian/code-unit",
-        "sebastian/code-unit-reverse-lookup",
-        "sebastian/comparator",
-        "sebastian/complexity",
-        "sebastian/diff",
-        "sebastian/environment",
-        "sebastian/exporter",
-        "sebastian/global-state",
-        "sebastian/lines-of-code",
-        "sebastian/object-enumerator",
-        "sebastian/object-reflector",
-        "sebastian/recursion-context",
-        "sebastian/resource-operations",
-        "sebastian/type",
-        "sebastian/version",
-        "symfony/debug",
-        "theseer/tokenizer"
-    ]
->>>>>>> d6da1da8d151315c3d0102de8706b783b2089b12
 }

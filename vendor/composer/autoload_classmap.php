@@ -14,11 +14,8 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
-<<<<<<< HEAD
     'App\\Http\\Controllers\\CategorieController' => $baseDir . '/app/Http/Controllers/CategorieController.php',
-=======
     'App\\Http\\Controllers\\CommandeController' => $baseDir . '/app/Http/Controllers/CommandeController.php',
->>>>>>> d6da1da8d151315c3d0102de8706b783b2089b12
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\ProduitController' => $baseDir . '/app/Http/Controllers/ProduitController.php',
@@ -34,10 +31,6 @@ return array(
     'App\\Models\\Adresse' => $baseDir . '/app/Models/Adresse.php',
     'App\\Models\\Categorie' => $baseDir . '/app/Models/Categorie.php',
     'App\\Models\\Commande' => $baseDir . '/app/Models/Commande.php',
-<<<<<<< HEAD
-    'App\\Models\\Filtre_poids' => $baseDir . '/app/Models/Filtre_poids.php',
-=======
->>>>>>> d6da1da8d151315c3d0102de8706b783b2089b12
     'App\\Models\\Filtre_taille' => $baseDir . '/app/Models/Filtre_taille.php',
     'App\\Models\\Image' => $baseDir . '/app/Models/Image.php',
     'App\\Models\\Note' => $baseDir . '/app/Models/Note.php',
@@ -196,19 +189,18 @@ return array(
     'Cron\\MonthField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
     'Database\\Seeders\\CategorieSeeder' => $baseDir . '/database/seeders/CategorieSeeder.php',
-<<<<<<< HEAD
-=======
     'Database\\Seeders\\CommandeProduitsSeeder' => $baseDir . '/database/seeders/CommandeProduitsSeeder.php',
     'Database\\Seeders\\CommandesSeeder' => $baseDir . '/database/seeders/CommandesSeeder.php',
->>>>>>> d6da1da8d151315c3d0102de8706b783b2089b12
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
     'Database\\Seeders\\ImageSeeder' => $baseDir . '/database/seeders/ImageSeeder.php',
     'Database\\Seeders\\PoidsSeeder' => $baseDir . '/database/seeders/PoidsSeeder.php',
     'Database\\Seeders\\ProduitsSeeder' => $baseDir . '/database/seeders/ProduitsSeeder.php',
+    'Database\\Seeders\\PromoProduitsSeeder' => $baseDir . '/database/seeders/PromoProduitsSeeder.php',
     'Database\\Seeders\\PromosSeeder' => $baseDir . '/database/seeders/PromosSeeder.php',
     'Database\\Seeders\\RoleSeeder' => $baseDir . '/database/seeders/RoleSeeder.php',
     'Database\\Seeders\\TaillesSeeder' => $baseDir . '/database/seeders/TaillesSeeder.php',
     'Database\\Seeders\\TypeSeeder' => $baseDir . '/database/seeders/TypeSeeder.php',
+    'Database\\Seeders\\UsersSeeder' => $baseDir . '/database/seeders/UsersSeeder.php',
     'DebugBar\\Bridge\\CacheCacheCollector' => $vendorDir . '/maximebf/debugbar/src/DebugBar/Bridge/CacheCacheCollector.php',
     'DebugBar\\Bridge\\DoctrineCollector' => $vendorDir . '/maximebf/debugbar/src/DebugBar/Bridge/DoctrineCollector.php',
     'DebugBar\\Bridge\\MonologCollector' => $vendorDir . '/maximebf/debugbar/src/DebugBar/Bridge/MonologCollector.php',

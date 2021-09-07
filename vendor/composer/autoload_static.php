@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5fb8fd5afa99cf852d8ed9d71b94d228
+class ComposerStaticInit8d927cf14b9b110d97b7dd81a9374b89
 {
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
@@ -35,8 +35,8 @@ class ComposerStaticInit5fb8fd5afa99cf852d8ed9d71b94d228
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
+        'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -550,11 +550,8 @@ class ComposerStaticInit5fb8fd5afa99cf852d8ed9d71b94d228
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
-<<<<<<< HEAD
         'App\\Http\\Controllers\\CategorieController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategorieController.php',
-=======
         'App\\Http\\Controllers\\CommandeController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommandeController.php',
->>>>>>> d6da1da8d151315c3d0102de8706b783b2089b12
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\ProduitController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProduitController.php',
@@ -570,10 +567,6 @@ class ComposerStaticInit5fb8fd5afa99cf852d8ed9d71b94d228
         'App\\Models\\Adresse' => __DIR__ . '/../..' . '/app/Models/Adresse.php',
         'App\\Models\\Categorie' => __DIR__ . '/../..' . '/app/Models/Categorie.php',
         'App\\Models\\Commande' => __DIR__ . '/../..' . '/app/Models/Commande.php',
-<<<<<<< HEAD
-        'App\\Models\\Filtre_poids' => __DIR__ . '/../..' . '/app/Models/Filtre_poids.php',
-=======
->>>>>>> d6da1da8d151315c3d0102de8706b783b2089b12
         'App\\Models\\Filtre_taille' => __DIR__ . '/../..' . '/app/Models/Filtre_taille.php',
         'App\\Models\\Image' => __DIR__ . '/../..' . '/app/Models/Image.php',
         'App\\Models\\Note' => __DIR__ . '/../..' . '/app/Models/Note.php',
@@ -732,19 +725,18 @@ class ComposerStaticInit5fb8fd5afa99cf852d8ed9d71b94d228
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\CategorieSeeder' => __DIR__ . '/../..' . '/database/seeders/CategorieSeeder.php',
-<<<<<<< HEAD
-=======
         'Database\\Seeders\\CommandeProduitsSeeder' => __DIR__ . '/../..' . '/database/seeders/CommandeProduitsSeeder.php',
         'Database\\Seeders\\CommandesSeeder' => __DIR__ . '/../..' . '/database/seeders/CommandesSeeder.php',
->>>>>>> d6da1da8d151315c3d0102de8706b783b2089b12
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\ImageSeeder' => __DIR__ . '/../..' . '/database/seeders/ImageSeeder.php',
         'Database\\Seeders\\PoidsSeeder' => __DIR__ . '/../..' . '/database/seeders/PoidsSeeder.php',
         'Database\\Seeders\\ProduitsSeeder' => __DIR__ . '/../..' . '/database/seeders/ProduitsSeeder.php',
+        'Database\\Seeders\\PromoProduitsSeeder' => __DIR__ . '/../..' . '/database/seeders/PromoProduitsSeeder.php',
         'Database\\Seeders\\PromosSeeder' => __DIR__ . '/../..' . '/database/seeders/PromosSeeder.php',
         'Database\\Seeders\\RoleSeeder' => __DIR__ . '/../..' . '/database/seeders/RoleSeeder.php',
         'Database\\Seeders\\TaillesSeeder' => __DIR__ . '/../..' . '/database/seeders/TaillesSeeder.php',
         'Database\\Seeders\\TypeSeeder' => __DIR__ . '/../..' . '/database/seeders/TypeSeeder.php',
+        'Database\\Seeders\\UsersSeeder' => __DIR__ . '/../..' . '/database/seeders/UsersSeeder.php',
         'DebugBar\\Bridge\\CacheCacheCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/Bridge/CacheCacheCollector.php',
         'DebugBar\\Bridge\\DoctrineCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/Bridge/DoctrineCollector.php',
         'DebugBar\\Bridge\\MonologCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/Bridge/MonologCollector.php',
@@ -5615,10 +5607,10 @@ class ComposerStaticInit5fb8fd5afa99cf852d8ed9d71b94d228
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5fb8fd5afa99cf852d8ed9d71b94d228::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5fb8fd5afa99cf852d8ed9d71b94d228::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit5fb8fd5afa99cf852d8ed9d71b94d228::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit5fb8fd5afa99cf852d8ed9d71b94d228::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8d927cf14b9b110d97b7dd81a9374b89::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8d927cf14b9b110d97b7dd81a9374b89::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit8d927cf14b9b110d97b7dd81a9374b89::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit8d927cf14b9b110d97b7dd81a9374b89::$classMap;
 
         }, null, ClassLoader::class);
     }

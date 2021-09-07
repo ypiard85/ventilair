@@ -16,7 +16,7 @@ class PromosSeeder extends Seeder
     {
         DB::table('promos')->insert([
             'nom' => 'Automne 2021',
-            'date_debut' => '2021-10-01',
+            'date_debut' => '2021-09-01',
             'date_fin' => '2021-11-03',
             'reduction' => '20',
             'created_at' => now()

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Promo;
 use App\Models\Produit;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
@@ -28,17 +30,25 @@ class HomeController extends Controller
     public function index()
     {
 
-
-
-
         //récupérer les produits avec ses catégories
         $categories = Categorie::all();
         $categories->load('produits.images');
 
-        //https://laravel.com/docs/8.x/eloquent-relationships
+        //récupération de la promo en cours
+        $now = new Carbon();
+        $promos = Promo::with('produits')
+            ->where('date_debut', '<=', $now->now())
+            ->where('date_fin', '>=', $now->now() )
+            ->get()
+        ;
+
+        dd($promos);
+
+
 
         return view('home', [
-            'categories' => $categories
+            'categories' => $categories,
+            'promos' => $promos
         ]);
 
     }
