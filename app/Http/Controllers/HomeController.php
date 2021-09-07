@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produit;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class HomeController extends Controller
 {
@@ -13,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -23,6 +27,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+
+
+
+        //récupérer les produits avec ses catégories
+        $categories = Categorie::all();
+        $categories->load('produits.images');
+
+        //https://laravel.com/docs/8.x/eloquent-relationships
+
+        return view('home', [
+            'categories' => $categories
+        ]);
+
     }
 }

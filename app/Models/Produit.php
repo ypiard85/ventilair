@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Note;
 use App\Models\Type;
 use App\Models\User;
+use App\Models\Image;
 use App\Models\Favoris;
 use App\Models\Commande;
 use App\Models\Categorie;
@@ -72,6 +73,11 @@ class Produit extends Model
     public function promos()
     {
         return $this->belongsToMany(Promo::class, 'promo_produits' );
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 
 }
