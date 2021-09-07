@@ -24,4 +24,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Concernant les commandes
 
-Route::resource('/compte', App\Http\Controllers\CommandeController::class);
+Route::resource('/commande', App\Http\Controllers\CommandeController::class);

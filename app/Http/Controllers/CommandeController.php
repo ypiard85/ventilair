@@ -11,6 +11,11 @@ class CommandeController extends Controller
 {
 
     
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -52,7 +57,7 @@ class CommandeController extends Controller
     {
         $id = Auth::user()->id; 
         $commandes = Commande::where('user_id', $id)->get();
-        return view('commandes.index', compact('commandes'));
+        return view('commandes.show', compact('commandes'));
     }
 
     /**
