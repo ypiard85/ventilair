@@ -23,4 +23,11 @@ Auth::routes();
 
 Route::resource('produits', HomeController::class);
 
+<<<<<<< HEAD
 Route::get('/', [HomeController::class, 'index' ] )->name('homepage');
+=======
+
+// Concernant les commandes
+
+Route::resource('/commande', App\Http\Controllers\CommandeController::class);
+>>>>>>> d6da1da8d151315c3d0102de8706b783b2089b12
