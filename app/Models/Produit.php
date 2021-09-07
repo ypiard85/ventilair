@@ -74,4 +74,9 @@ class Produit extends Model
         return $this->belongsToMany(Promo::class, 'promo_produits' );
     }
 
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
 }

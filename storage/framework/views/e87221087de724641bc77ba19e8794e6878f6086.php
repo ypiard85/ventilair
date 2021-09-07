@@ -1,6 +1,6 @@
-@extends('layouts.app')
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <section class="mt-5 container">
             <table class="col-md-12 table table-hover">
 
@@ -12,13 +12,13 @@
                         <th scope="col">Détails</th>
                     </tr>
                 </thead>
-                @foreach($commandes as $commande)
+                <?php $__currentLoopData = $commandes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $commande): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                     <tbody>
                         <tr>
-                            <td>{{ $commande->numero }}</td>
-                            <td>{{ $commande->created_at }}</td>
-                            <td>{{ $commande->prix }}€</td>
+                            <td><?php echo e($commande->numero); ?></td>
+                            <td><?php echo e($commande->created_at); ?></td>
+                            <td><?php echo e($commande->prix); ?>€</td>
                             <td>
                                 <form action="commande.php" method="POST">
                                     <input name="number" type="hidden" value="numero">
@@ -31,8 +31,10 @@
                     </tbody>
 
 
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </table>
         </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\ventilair\resources\views/commandes/index.blade.php ENDPATH**/ ?>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Commande;
+use Illuminate\Support\Facades\Auth;
+
 
 class CommandeController extends Controller
 {
@@ -47,7 +50,9 @@ class CommandeController extends Controller
      */
     public function show($id)
     {
-        return view('commandes.show');
+        $id = Auth::user()->id; 
+        $commandes = Commande::where('user_id', $id)->get();
+        return view('commandes.index', compact('commandes'));
     }
 
     /**
