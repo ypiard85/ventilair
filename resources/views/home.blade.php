@@ -24,15 +24,12 @@
                                 <h5 class="card-title">{{ $produit->nom }}</h5>
                                 <p>
                                     <del>{{ $produit->prix }} €</del>
-                                        @php
-                                            $prixbarre =  $produit->prix / 1.2;
-                                            $total = round($prixbarre, 2);
-                                        @endphp
-                                    <span class="fs-3" >{{ $total }} €</span>
+
+                                    <span class="fs-3" >{{ $produit->prix -  $produit->prix * ($promos->reduction / 100)  }} €</span>
                                 </p>
 
                                 <p class="card-text">{{ $produit->description_courte }}</p>
-                                <a href="#" class="btn btn-info text-white">Voir le produit</a>
+                                <a href="{{ route('produits.show', ['produit' => $produit->id ] ) }}" class="btn btn-info text-white" >Voir le produit</a>
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Promo;
 use App\Models\Produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,14 +20,14 @@ class ProduitController extends Controller
     {
 
 
-         //afficher les produits AUTRE PAGE
+         //afficher les produits par ordre croissant
         $produits = Produit::orderBy('nom', 'DESC')->get();
         $produits->load('images', 'categorie');
 
 
-        return view('produit', [
+        return view('produits.index', [
             'produits' => $produits,
-        ]);
+0        ]);
 
     }
 
@@ -56,9 +58,19 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Produit $produit)
     {
-        //
+                //récupération de la promo en cours
+                $now = new Carbon();
+
+                $produit->load(['promos' => function ($query) {
+                    $query->whereDate('date_debut', '<=', date('Y-m-d'))
+                    ->whereDate('date_fin', '>=', date('Y-m-d'));
+                }]);
+
+        return view('produits.show',[
+            'produit' => $produit,
+        ]);
     }
 
     /**

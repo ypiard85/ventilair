@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitController;
 
 /*
@@ -21,7 +22,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('produits', HomeController::class);
+Route::resource('produits', ProduitController::class);
+Route::resource('paniers', PanierController::class);
 
 Route::get('/', [HomeController::class, 'index' ] )->name('homepage');
 
