@@ -19,11 +19,15 @@
                 <h3>{{ $produit->prix }} €</h3>
             @endif
             <p class="mt-3">{{ $produit->description }}</p>
-            <form action="{{ route('paniers.create') }}" method="get">
+            <form action="{{ route('paniers.store', $produit ) }}" method="post">
                 @csrf
-                <input type="text" name="produit" value="{{ $produit->id }}" >
-
+                @if(Auth::user())
+                <input type="hidden" value="{{ $produit->id }}" name="produit_id" >
+                <input name="quantite" min="1" type="number" value="1" max="9" placeholder="Nombre ?" >
                 <button class="btn btn-primary text-white">Ajouter au panier</button>
+                @else
+                <button disabled class="btn btn-primary text-white">Ajouter au panier</button>
+                @endif
             </form>
         </div>
     </div>

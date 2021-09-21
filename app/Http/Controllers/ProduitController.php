@@ -68,8 +68,10 @@ class ProduitController extends Controller
                     ->whereDate('date_fin', '>=', date('Y-m-d'));
                 }]);
 
+                $produit->load('images');
+
         return view('produits.show',[
-            'produit' => $produit,
+            'produit' => $produit
         ]);
     }
 

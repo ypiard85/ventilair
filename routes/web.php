@@ -16,16 +16,18 @@ use App\Http\Controllers\ProduitController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
 Route::resource('produits', ProduitController::class);
 Route::resource('paniers', PanierController::class);
 
+Route::post('viderpanier', [PanierController::class, 'empty'])->name('empty_panier');
+Route::post('remove/{produit}' , [PanierController::class, 'remove'])->name('remove_panier');
+
 Route::get('/', [HomeController::class, 'index' ] )->name('homepage');
+
+
 
 // Concernant les commandes
 
