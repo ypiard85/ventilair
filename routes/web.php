@@ -20,6 +20,9 @@ use App\Http\Controllers\ProduitController;
 Auth::routes();
 
 Route::resource('produits', ProduitController::class);
+Route::get('populaires', [ProduitController::class, 'populaires'])->name('produits_populaires');
+
+
 Route::resource('paniers', PanierController::class);
 
 Route::post('viderpanier', [PanierController::class, 'empty'])->name('empty_panier');
@@ -27,7 +30,7 @@ Route::post('remove/{produit}' , [PanierController::class, 'remove'])->name('rem
 
 Route::get('/', [HomeController::class, 'index' ] )->name('homepage');
 
-
+Route::post('/deleteuser/{user}', [HomeController::class, 'deleteuser'] )->name('deleteuser');
 
 // Concernant les commandes
 

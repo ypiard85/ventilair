@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Promo;
 use App\Models\Produit;
 use App\Models\Categorie;
@@ -50,6 +51,17 @@ class HomeController extends Controller
             'promos' => $promos,
 
         ]);
+
+    }
+
+    public function deleteuser(User $user, Request $request){
+
+        $user = User::find($request->user_id);
+
+        $user->delete();
+
+
+        return redirect('/');
 
     }
 }

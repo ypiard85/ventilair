@@ -34,10 +34,18 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('produits.index') }}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Produits
                             </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="nav-link dropdown-item" href="{{ route('produits.index') }}">
+                                    Tout les produits
+                                </a>
+                                <a class="nav-link dropdown-item" href="{{ route('produits_populaires') }}">
+                                    Les plus populaires
+                                </a>
+                            </div>
                         </li>
                         @if(Auth::user())
                         <li class="nav-item dropdown">

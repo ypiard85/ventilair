@@ -25,7 +25,7 @@ class ProduitsSeeder extends Seeder
                 'categorie_id' => rand(1, 4),
                 'prix' => rand(10, 2000),
                 'stock' => rand(0, 100),
-                'note' => 3.8,
+                'note' => rand(1.1 , 9.9),
                 'couleur' => $couleurs[array_rand($couleurs, 1)],
                 'type_id' => rand(1, 2),
                 'taille' => rand(1, 200),
