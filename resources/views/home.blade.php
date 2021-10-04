@@ -6,7 +6,7 @@
     <div class="promos">
 
         @if(Auth::user())
-        <form action="{{ route('deleteuser', Auth::user() ) }}", method="post">
+        <form action="{{ route('deleteuser', Auth::user() ) }}" method="post">
             @csrf
             <input name="user_id" type="text" value="{{ Auth::user()->id }}">
             <button onclick="return confirm('etes vous sûr de vouloir supprimer votre profil')" >Supprimer l'utilisateur</button>
