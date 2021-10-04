@@ -23,7 +23,9 @@ class CommandeController extends Controller
      */
     public function index()
     {
-        //
+        $id = Auth::user()->id; 
+        $commandes = Commande::where('user_id', $id)->get();
+        return view('commandes.index', compact('commandes'));
     }
 
     /**
@@ -56,8 +58,10 @@ class CommandeController extends Controller
     public function show($id)
     {
         $id = Auth::user()->id; 
-        $commandes = Commande::where('user_id', $id)->get();
-        return view('commandes.show', compact('commandes'));
+        $commandesdetails = Commande::where('user_id', $id)->get();
+        $commandesdetails->load('produits');
+        $commandesdetails->toArray();
+        return view('commandes.show', compact('commandesdetails'));
     }
 
     /**
