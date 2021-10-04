@@ -10,6 +10,8 @@ class CategorieController extends Controller
 {
     public function categories(){
 
+        $categories = Categorie::all();
+
 
     }
 }

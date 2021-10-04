@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitController;
 
@@ -22,6 +23,7 @@ Auth::routes();
 Route::resource('produits', ProduitController::class);
 Route::get('populaires', [ProduitController::class, 'populaires'])->name('produits_populaires');
 
+Route::get('/dashboard', [UserController::class, 'dashboard' ] )->name('dashboard');
 
 Route::resource('paniers', PanierController::class);
 
@@ -29,6 +31,7 @@ Route::post('viderpanier', [PanierController::class, 'empty'])->name('empty_pani
 Route::post('remove/{produit}' , [PanierController::class, 'remove'])->name('remove_panier');
 
 Route::get('/', [HomeController::class, 'index' ] )->name('homepage');
+
 
 Route::post('/deleteuser/{user}', [HomeController::class, 'deleteuser'] )->name('deleteuser');
 

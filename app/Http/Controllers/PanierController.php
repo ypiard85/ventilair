@@ -66,7 +66,7 @@ class PanierController extends Controller
         $panier[$produit->id] = $produit_detail;
         session()->put("panier", $panier);
 
-        return redirect('/');
+        return back();
 
     }
 

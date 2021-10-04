@@ -6,7 +6,7 @@
     <div class="promos">
 
         @if(Auth::user())
-        <form action="{{ route('deleteuser', Auth::user() ) }}", method="post">
+        <form action="{{ route('deleteuser', Auth::user() ) }}" method="post">
             @csrf
             <input name="user_id" type="text" value="{{ Auth::user()->id }}">
             <button onclick="return confirm('etes vous sûr de vouloir supprimer votre profil')" >Supprimer l'utilisateur</button>
@@ -24,26 +24,28 @@
             <p class="fs-1">{{ $promos->nom }}</p>
         </div>
         <div class="row">
-        @foreach($promos->produits as $produit)
-                @foreach($produit->images as $image)
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <img src="{{ asset("images/$image->name") }}" class="w-100 shadow" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $produit->nom }}</h5>
-                                <p>
-                                    <del>{{ $produit->prix }} €</del>
+        @if($promos != null)
+            @foreach($promos->produits as $produit)
+                    @foreach($produit->images as $image)
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <img src="{{ asset("images/$image->name") }}" class="w-100 shadow" alt="">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $produit->nom }}</h5>
+                                    <p>
+                                        <del>{{ $produit->prix }} €</del>
 
-                                    <span class="fs-3" >{{ $produit->prix -  $produit->prix * ($promos->reduction / 100)  }} €</span>
-                                </p>
+                                        <span class="fs-3" >{{ $produit->prix -  $produit->prix * ($promos->reduction / 100)  }} €</span>
+                                    </p>
 
-                                <p class="card-text">{{ $produit->description_courte }}</p>
-                                <a href="{{ route('produits.show', ['produit' => $produit->id ] ) }}" class="btn btn-info text-white" >Voir le produit</a>
+                                    <p class="card-text">{{ $produit->description_courte }}</p>
+                                    <a href="{{ route('produits.show', ['produit' => $produit->id ] ) }}" class="btn btn-info text-white" >Voir le produit</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        @endforeach
                     @endforeach
-                @endforeach
+                @endif
             </div>
     </div>
     @endif

@@ -21,7 +21,7 @@ class ProduitController extends Controller
 
 
          //afficher les produits par ordre croissant
-        $produits = Produit::orderBy('nom', 'DESC')->get();
+        $produits = Produit::orderBy('nom', 'ASC')->get();
         $produits->load('images', 'categorie');
 
 
@@ -33,7 +33,7 @@ class ProduitController extends Controller
 
     public function populaires()
     {
-        $produits = Produit::orderBy('note', 'DESC')->limit(5)->get();
+        $produits = Produit::orderBy('note', 'DESC')->limit(10)->get();
 
         $produits->load(['promos' => function ($query) {
             $query->whereDate('date_debut', '<=', date('Y-m-d'))
@@ -97,7 +97,7 @@ class ProduitController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
