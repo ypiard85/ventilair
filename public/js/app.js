@@ -339,41 +339,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ getBoundingClientRect)
 /* harmony export */ });
-/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
-
-var round = Math.round;
-function getBoundingClientRect(element, includeScale) {
+// import { isHTMLElement } from './instanceOf';
+function getBoundingClientRect(element, // eslint-disable-next-line unused-imports/no-unused-vars
+includeScale) {
   if (includeScale === void 0) {
     includeScale = false;
   }
 
   var rect = element.getBoundingClientRect();
   var scaleX = 1;
-  var scaleY = 1;
-
-  if ((0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(element) && includeScale) {
-    var offsetHeight = element.offsetHeight;
-    var offsetWidth = element.offsetWidth; // Do not attempt to divide by 0, otherwise we get `Infinity` as scale
-    // Fallback to 1 in case both values are `0`
-
-    if (offsetWidth > 0) {
-      scaleX = rect.width / offsetWidth || 1;
-    }
-
-    if (offsetHeight > 0) {
-      scaleY = rect.height / offsetHeight || 1;
-    }
-  }
+  var scaleY = 1; // FIXME:
+  // `offsetWidth` returns an integer while `getBoundingClientRect`
+  // returns a float. This results in `scaleX` or `scaleY` being
+  // non-1 when it should be for elements that aren't a full pixel in
+  // width or height.
+  // if (isHTMLElement(element) && includeScale) {
+  //   const offsetHeight = element.offsetHeight;
+  //   const offsetWidth = element.offsetWidth;
+  //   // Do not attempt to divide by 0, otherwise we get `Infinity` as scale
+  //   // Fallback to 1 in case both values are `0`
+  //   if (offsetWidth > 0) {
+  //     scaleX = rect.width / offsetWidth || 1;
+  //   }
+  //   if (offsetHeight > 0) {
+  //     scaleY = rect.height / offsetHeight || 1;
+  //   }
+  // }
 
   return {
-    width: round(rect.width / scaleX),
-    height: round(rect.height / scaleY),
-    top: round(rect.top / scaleY),
-    right: round(rect.right / scaleX),
-    bottom: round(rect.bottom / scaleY),
-    left: round(rect.left / scaleX),
-    x: round(rect.left / scaleX),
-    y: round(rect.top / scaleY)
+    width: rect.width / scaleX,
+    height: rect.height / scaleY,
+    top: rect.top / scaleY,
+    right: rect.right / scaleX,
+    bottom: rect.bottom / scaleY,
+    left: rect.left / scaleX,
+    x: rect.left / scaleX,
+    y: rect.top / scaleY
   };
 }
 
@@ -5121,7 +5122,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _popperjs_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @popperjs/core */ "./node_modules/@popperjs/core/lib/index.js");
 /* harmony import */ var _popperjs_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @popperjs/core */ "./node_modules/@popperjs/core/lib/popper.js");
 /*!
-  * Bootstrap v5.1.0 (https://getbootstrap.com/)
+  * Bootstrap v5.1.1 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -5129,7 +5130,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): util/index.js
+ * Bootstrap (v5.1.1): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5440,7 +5441,7 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): dom/event-handler.js
+ * Bootstrap (v5.1.1): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5503,7 +5504,6 @@ function bootstrapDelegationHandler(element, selector, fn) {
           event.delegateTarget = target;
 
           if (handler.oneOff) {
-            // eslint-disable-next-line unicorn/consistent-destructuring
             EventHandler.off(element, event.type, selector, fn);
           }
 
@@ -5729,7 +5729,7 @@ const EventHandler = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): dom/data.js
+ * Bootstrap (v5.1.1): dom/data.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5783,7 +5783,7 @@ var Data = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): base-component.js
+ * Bootstrap (v5.1.1): base-component.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5793,7 +5793,7 @@ var Data = {
  * ------------------------------------------------------------------------
  */
 
-const VERSION = '5.1.0';
+const VERSION = '5.1.1';
 
 class BaseComponent {
   constructor(element) {
@@ -5849,7 +5849,7 @@ class BaseComponent {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): util/component-functions.js
+ * Bootstrap (v5.1.1): util/component-functions.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5875,7 +5875,7 @@ const enableDismissTrigger = (component, method = 'hide') => {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): alert.js
+ * Bootstrap (v5.1.1): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5964,7 +5964,7 @@ defineJQueryPlugin(Alert);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): button.js
+ * Bootstrap (v5.1.1): button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -6035,7 +6035,7 @@ defineJQueryPlugin(Button);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): dom/manipulator.js
+ * Bootstrap (v5.1.1): dom/manipulator.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -6109,7 +6109,7 @@ const Manipulator = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): dom/selector-engine.js
+ * Bootstrap (v5.1.1): dom/selector-engine.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -6179,7 +6179,7 @@ const SelectorEngine = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): carousel.js
+ * Bootstrap (v5.1.1): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -6404,8 +6404,12 @@ class Carousel extends BaseComponent {
   }
 
   _addTouchEventListeners() {
+    const hasPointerPenTouch = event => {
+      return this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH);
+    };
+
     const start = event => {
-      if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
+      if (hasPointerPenTouch(event)) {
         this.touchStartX = event.clientX;
       } else if (!this._pointerEvent) {
         this.touchStartX = event.touches[0].clientX;
@@ -6418,7 +6422,7 @@ class Carousel extends BaseComponent {
     };
 
     const end = event => {
-      if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
+      if (hasPointerPenTouch(event)) {
         this.touchDeltaX = event.clientX - this.touchStartX;
       }
 
@@ -6724,7 +6728,7 @@ defineJQueryPlugin(Carousel);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): collapse.js
+ * Bootstrap (v5.1.1): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -6758,7 +6762,7 @@ const CLASS_NAME_COLLAPSED = 'collapsed';
 const CLASS_NAME_HORIZONTAL = 'collapse-horizontal';
 const WIDTH = 'width';
 const HEIGHT = 'height';
-const SELECTOR_ACTIVES = '.show, .collapsing';
+const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing';
 const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="collapse"]';
 /**
  * ------------------------------------------------------------------------
@@ -7042,7 +7046,7 @@ defineJQueryPlugin(Collapse);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): dropdown.js
+ * Bootstrap (v5.1.1): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7504,7 +7508,7 @@ defineJQueryPlugin(Dropdown);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): util/scrollBar.js
+ * Bootstrap (v5.1.1): util/scrollBar.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7608,7 +7612,7 @@ class ScrollBarHelper {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): util/backdrop.js
+ * Bootstrap (v5.1.1): util/backdrop.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7732,7 +7736,7 @@ class Backdrop {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): util/focustrap.js
+ * Bootstrap (v5.1.1): util/focustrap.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7835,7 +7839,7 @@ class FocusTrap {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): modal.js
+ * Bootstrap (v5.1.1): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7875,6 +7879,7 @@ const CLASS_NAME_OPEN = 'modal-open';
 const CLASS_NAME_FADE$3 = 'fade';
 const CLASS_NAME_SHOW$4 = 'show';
 const CLASS_NAME_STATIC = 'modal-static';
+const OPEN_SELECTOR$1 = '.modal.show';
 const SELECTOR_DIALOG = '.modal-dialog';
 const SELECTOR_MODAL_BODY = '.modal-body';
 const SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="modal"]';
@@ -8240,7 +8245,14 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$2, functi
         this.focus();
       }
     });
-  });
+  }); // avoid conflict when clicking moddal toggler while another one is open
+
+  const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR$1);
+
+  if (allReadyOpen) {
+    Modal.getInstance(allReadyOpen).hide();
+  }
+
   const data = Modal.getOrCreateInstance(target);
   data.toggle(this);
 });
@@ -8256,7 +8268,7 @@ defineJQueryPlugin(Modal);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): offcanvas.js
+ * Bootstrap (v5.1.1): offcanvas.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8512,7 +8524,7 @@ defineJQueryPlugin(Offcanvas);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): util/sanitizer.js
+ * Bootstrap (v5.1.1): util/sanitizer.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8625,7 +8637,7 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): tooltip.js
+ * Bootstrap (v5.1.1): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8799,9 +8811,7 @@ class Tooltip extends BaseComponent {
       this.tip.remove();
     }
 
-    if (this._popper) {
-      this._popper.destroy();
-    }
+    this._disposePopper();
 
     super.dispose();
   }
@@ -8821,6 +8831,15 @@ class Tooltip extends BaseComponent {
 
     if (showEvent.defaultPrevented || !isInTheDom) {
       return;
+    } // A trick to recreate a tooltip in case a new title is given by using the NOT documented `data-bs-original-title`
+    // This will be removed later in favor of a `setContent` method
+
+
+    if (this.constructor.NAME === 'tooltip' && this.tip && this.getTitle() !== this.tip.querySelector(SELECTOR_TOOLTIP_INNER).innerHTML) {
+      this._disposePopper();
+
+      this.tip.remove();
+      this.tip = null;
     }
 
     const tip = this.getTipElement();
@@ -8910,11 +8929,7 @@ class Tooltip extends BaseComponent {
 
       EventHandler.trigger(this._element, this.constructor.Event.HIDDEN);
 
-      if (this._popper) {
-        this._popper.destroy();
-
-        this._popper = null;
-      }
+      this._disposePopper();
     };
 
     const hideEvent = EventHandler.trigger(this._element, this.constructor.Event.HIDE);
@@ -9294,6 +9309,14 @@ class Tooltip extends BaseComponent {
     this._cleanTipClass();
 
     this._addAttachmentClass(this._getAttachment(state.placement));
+  }
+
+  _disposePopper() {
+    if (this._popper) {
+      this._popper.destroy();
+
+      this._popper = null;
+    }
   } // Static
 
 
@@ -9324,7 +9347,7 @@ defineJQueryPlugin(Tooltip);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): popover.js
+ * Bootstrap (v5.1.1): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9434,7 +9457,7 @@ defineJQueryPlugin(Popover);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): scrollspy.js
+ * Bootstrap (v5.1.1): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9669,7 +9692,7 @@ defineJQueryPlugin(ScrollSpy);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): tab.js
+ * Bootstrap (v5.1.1): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9867,7 +9890,7 @@ defineJQueryPlugin(Tab);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): toast.js
+ * Bootstrap (v5.1.1): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
