@@ -6,32 +6,32 @@
 
                 <thead>
                     <tr>
-                        <th scope="col">Numéro</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Montant</th>
-                        <th scope="col">Détails</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prix unitaire</th>
+                        <th scope="col">Quantité</th>
                     </tr>
                 </thead>
-                @foreach($commandes as $commande)
+                @foreach($commandesdetails as $commandes)
+                <h2>Commande n°{{ $commandes->numero}} pour un montant de {{ $commandes->prix}}€ TTC</h2>
 
                     <tbody>
+                    @foreach($commandes->produits as $produit)
                         <tr>
-                            <td>{{ $commande->numero }}</td>
-                            <td>{{ $commande->created_at }}</td>
-                            <td>{{ $commande->prix }}€</td>
+                            <td>{{ ($produit->nom) }}</td>
+                            <td>{{ ($produit->prix) }}</td>
+                            <td>{{ $produit->pivot->quantite }}</td>
                             <td>
-                                <form action="commande.php" method="POST">
-                                    <input name="number" type="hidden" value="numero">
-                                    <input name="id" type="hidden" value="id">
-                                    <input class="btn btn-warning" type="submit" value="Détails">
-                                </form>
                             </td>
 
                         </tr>
-                    </tbody>
+                        @endforeach
 
+                    </tbody>
+                    
 
                     @endforeach
+                    
+                    
             </table>
         </section>
 @endsection

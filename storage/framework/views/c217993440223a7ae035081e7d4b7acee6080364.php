@@ -6,32 +6,32 @@
 
                 <thead>
                     <tr>
-                        <th scope="col">Numéro</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Montant</th>
-                        <th scope="col">Détails</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prix unitaire</th>
+                        <th scope="col">Quantité</th>
                     </tr>
                 </thead>
-                <?php $__currentLoopData = $commandes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $commande): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $commandesdetails; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $commandes): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <h2>Commande n°<?php echo e($commandes->numero); ?> pour un montant de <?php echo e($commandes->prix); ?>€ TTC</h2>
 
                     <tbody>
+                    <?php $__currentLoopData = $commandes->produits; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $produit): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td><?php echo e($commande->numero); ?></td>
-                            <td><?php echo e($commande->created_at); ?></td>
-                            <td><?php echo e($commande->prix); ?>€</td>
+                            <td><?php echo e(($produit->nom)); ?></td>
+                            <td><?php echo e(($produit->prix)); ?></td>
+                            <td><?php echo e($produit->pivot->quantite); ?></td>
                             <td>
-                                <form action="commande.php" method="POST">
-                                    <input name="number" type="hidden" value="numero">
-                                    <input name="id" type="hidden" value="id">
-                                    <input class="btn btn-warning" type="submit" value="Détails">
-                                </form>
                             </td>
 
                         </tr>
-                    </tbody>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
+                    </tbody>
+                    
 
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    
+                    
             </table>
         </section>
 <?php $__env->stopSection(); ?>
