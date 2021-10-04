@@ -34,7 +34,6 @@ class ProduitController extends Controller
     public function populaires()
     {
         $produits = Produit::orderBy('note', 'DESC')->limit(10)->get();
-
         $produits->load(['promos' => function ($query) {
             $query->whereDate('date_debut', '<=', date('Y-m-d'))
             ->whereDate('date_fin', '>=', date('Y-m-d'));
