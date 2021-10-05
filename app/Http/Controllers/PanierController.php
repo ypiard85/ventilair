@@ -30,6 +30,11 @@ class PanierController extends Controller
 
     }
 
+    public function validation() {
+        $panier = session()->get('panier');
+        return view('panier.validation', compact('panier'));
+    }
+
     public function remove(Produit $produit)
     {
         $panier = session()->get("panier"); // On récupère le panier en session
@@ -45,7 +50,7 @@ class PanierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Produit $produit, Request $request)
+    public function store(Request $request)
     {
 
 
@@ -66,7 +71,7 @@ class PanierController extends Controller
         $panier[$produit->id] = $produit_detail;
         session()->put("panier", $panier);
 
-        return redirect('/');
+        return redirect('/paniers');
 
     }
 
@@ -76,52 +81,5 @@ class PanierController extends Controller
 
 
         return redirect('/');
-    }
-
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-
     }
 }

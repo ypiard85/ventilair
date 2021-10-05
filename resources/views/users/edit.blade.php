@@ -118,11 +118,10 @@
         </div>
     </div>
 
-    @if(!isset($adresse))
-    <div class="mt-5 row justify-content-center">
+    @if(count($user->adresses) < 2 ) <div class="mt-5 row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Adresse postale') }}</div>
+                <div class="card-header">{{ __('Ajouter une adresse postale supplémentaire') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('adresse.store') }}">
                         @csrf
@@ -131,7 +130,7 @@
                             <label for="numero" class="col-md-4 col-form-label text-md-right">{{ __('Numéro de rue') }}</label>
 
                             <div class="col-md-6">
-                                <input id="numero" type="text" class="form-control @error('name') is-invalid @enderror" name="numero" value="" required autofocus>
+                                <input id="numero" type="number" class="form-control @error('name') is-invalid @enderror" name="numero" value="" autofocus>
 
                                 @error('numero')
                                 <span class="invalid-feedback" role="alert">
@@ -198,88 +197,108 @@
         </div>
 
 
-    </div>
-    @else
-    <div class="mt-5 row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Adresse postale') }}</div>
-                <div class="card-body">
-                    <form method="POST" action="{{ route('adresse.update', $adresse) }}">
-                        @csrf
-                        @method ('PUT')
-                        <div class="form-group row">
-                            <label for="numero" class="col-md-4 col-form-label text-md-right">{{ __('Numéro de rue') }}</label>
+</div>
+@endif
 
-                            <div class="col-md-6">
-                                <input id="numero" type="text" class="form-control @error('name') is-invalid @enderror" name="numero" value="{{ $adresse->numero }}" required autofocus>
-
-                                @error('numero')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="rue" class="col-md-4 col-form-label text-md-right">{{ __('Nom de rue') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="rue" type="text" class="form-control @error('name') is-invalid @enderror" name="rue" autocomplete="street-address" value="{{ $adresse->rue }}" required autofocus>
-
-                                @error('rue')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="code_postal" class="col-md-4 col-form-label text-md-right">{{ __('Code postal') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="code_postal" type="text" class="form-control @error('name') is-invalid @enderror" name="code_postal" autocomplete="postal-code" value="{{ $adresse->code_postal }}" required autofocus>
-
-                                @error('code_postal')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="ville" class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="ville" type="text" class="form-control @error('name') is-invalid @enderror" name="ville" autocomplete="address-level2" value="{{ $adresse->ville }}" required autofocus>
-
-                                @error('ville')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="m-1 btn btn-success">
-                                    {{ __('Enregistrer cette adresse') }}
-                                </button>
-                            </div>
-                        </div>
-                </div>
+@if (count($user->adresses) > 0)
+@foreach($user->adresses as $adresse)
+<div class="mt-5 row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">{{ __('Adresse postale n°') }}
+                <td>{{ $loop->iteration }}</td>
             </div>
+            <div class="card-body">
+                <form method="POST" action="{{ route('adresse.update', $adresse) }}">
+                    @csrf
+                    @method ('PUT')
+                    @if($adresse->defaut != 1)
+                    <div class="mb-3 form-group row">
+                        <label class="col-md-6 col-form-label text-md-right" for="defaut">Définir cette adresse comme l'adresse de livraison par défaut</label>
+                        <div class="col-md-6 d-flex">
+                            <input type="checkbox" id="defaut" name="defaut" value="1">
+                        </div>
+                    </div>
+                    @else
+                    <p>Cette adresse est définie comme l'adresse de livraison par défaut</p>
+                    @endif
 
+                    <div class="form-group row">
+                        <label for="numero" class="col-md-4 col-form-label text-md-right">{{ __('Numéro de rue') }}</label>
 
+                        <div class="col-md-6">
+                            <input id="numero" type="text" class="form-control @error('name') is-invalid @enderror" name="numero" value="{{ $adresse->numero }}" required autofocus>
+
+                            @error('numero')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="rue" class="col-md-4 col-form-label text-md-right">{{ __('Nom de rue') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="rue" type="text" class="form-control @error('name') is-invalid @enderror" name="rue" autocomplete="street-address" value="{{ $adresse->rue }}" required autofocus>
+
+                            @error('rue')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="code_postal" class="col-md-4 col-form-label text-md-right">{{ __('Code postal') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="code_postal" type="text" class="form-control @error('name') is-invalid @enderror" name="code_postal" autocomplete="postal-code" value="{{ $adresse->code_postal }}" required autofocus>
+
+                            @error('code_postal')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="ville" class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="ville" type="text" class="form-control @error('name') is-invalid @enderror" name="ville" autocomplete="address-level2" value="{{ $adresse->ville }}" required autofocus>
+
+                            @error('ville')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="m-1 btn btn-success">
+                                {{ __('Enregistrer cette adresse') }}
+                            </button>
+                        </div>
+                    </div>
+            </div>
+            </form>
+            <form class="form-group row mb-0" method="POST" action="{{ route('adresse.destroy', $adresse) }}">
+                @csrf
+                @method('DELETE')
+                <button class="col-md-4 offset-md-4 mb-1 btn btn-danger" type="submit">{{ __('Supprimer l\'adresse') }}</button>
             </form>
         </div>
-
-
     </div>
-    @endif
+
+
+</div>
+@endforeach
+@endif
 </div>
 @endsection

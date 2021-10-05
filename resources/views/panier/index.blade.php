@@ -60,7 +60,7 @@
       @endif
 
       @if(session()->has('panier') && count(session('panier')) > 0)
-      <button class="btn btn-success">Valider le panier</button>
+      <a type="submit" class="btn btn-success" href="{{ route('validation_panier') }}">Valider le panier</a>
       @endif
 </div>
 

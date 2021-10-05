@@ -29,7 +29,8 @@ class UserController extends Controller
         $user = User::where('id', $id)->get();
         $user->load('adresses');
         $user = $user->first();
-        $adresse = $user->adresses->first();
+        $adresse = $user->first()->adresses->where('defaut', 1);
+        $adresse = $adresse->first();
         return view('users.index', compact('user', 'adresse'));
     }
 
@@ -73,8 +74,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $adresse = $user->adresses->first();
-        return view('users.edit', compact('user', 'adresse'));
+        $user->load('adresses');
+        return view('users.edit', compact('user'));
     }
 
     /**
