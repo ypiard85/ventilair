@@ -27,9 +27,10 @@
         @if($promos != null)
             @foreach($promos->produits as $produit)
                     @foreach($produit->images as $image)
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <img src="{{ asset("images/$image->name") }}" class="w-100 shadow" alt="">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <p class="p-2">{{ $produit->categorie->nom }}</p>
+                            <img src="{{ asset("images/$image->name") }}" class="w-100 shadow" alt="">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $produit->nom }}</h5>
                                     <p>

@@ -38,6 +38,7 @@ class ProduitController extends Controller
 
     }
 
+
     public function populaires()
     {
         $produits = Produit::orderBy('note', 'DESC')->limit(10)->get();
@@ -46,6 +47,18 @@ class ProduitController extends Controller
 
         return view('produits.populaire', [
             'produits' => $produits
+        ]);
+    }
+
+    public function categories()
+    {
+                //récupérer les produits avec ses catégories
+                $categories = Categorie::all();
+                $categories->load('produits.images');
+                $promos = Promo::all();
+        return view('produits.categories', [
+            'categories' => $categories,
+            'promos' => $promos
         ]);
     }
 

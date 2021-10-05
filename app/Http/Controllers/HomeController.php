@@ -31,9 +31,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        //récupérer les produits avec ses catégories
-        $categories = Categorie::all();
-        $categories->load('produits.images');
+
 
         //récupération de la promo en cours
         $now = new Carbon();
@@ -44,7 +42,7 @@ class HomeController extends Controller
         }])
             ->where('date_debut', '<=', $now->now())
             ->where('date_fin', '>=', $now->now())->get()
-            ;
+        ;
 
         if(isset($promos[0])){
             $promos = $promos[0];
@@ -53,7 +51,7 @@ class HomeController extends Controller
         }
 
         return view('home', [
-            'categories' => $categories,
+            //'categories' => $categories,
             'promos' => $promos,
         ]);
 
