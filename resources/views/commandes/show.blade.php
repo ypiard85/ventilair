@@ -12,6 +12,7 @@
                     </tr>
                 </thead>
                 @foreach($commandesdetails as $commandes)
+                {{ dd($commandes) }}
                 <h2>Commande n°{{ $commandes->numero}} pour un montant de {{ $commandes->prix}}€ TTC</h2>
 
                     <tbody>

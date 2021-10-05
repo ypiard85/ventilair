@@ -35,3 +35,8 @@ Route::post('/deleteuser/{user}', [HomeController::class, 'deleteuser'] )->name(
 // Concernant les commandes
 
 Route::resource('/commande', App\Http\Controllers\CommandeController::class);
+
+// Concernant le compte client
+Route::resource('/user', App\Http\Controllers\UserController::class);
+
+Route::resource('/adresse', App\Http\Controllers\AdresseController::class);
