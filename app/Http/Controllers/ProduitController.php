@@ -25,11 +25,15 @@ class ProduitController extends Controller
 
          //afficher les produits par ordre croissant
         $produits = Produit::orderBy('nom', 'ASC')->get();
-        $produits->load('images', 'categorie');
+
+        $promos = Promo::all();
+
+        $produits->load('images', 'categorie', 'promos');
 
 
         return view('produits.index', [
             'produits' => $produits,
+            'promos' => $promos
         ]);
 
     }
@@ -37,10 +41,8 @@ class ProduitController extends Controller
     public function populaires()
     {
         $produits = Produit::orderBy('note', 'DESC')->limit(10)->get();
-        $produits->load(['promos' => function ($query) {
-            $query->whereDate('date_debut', '<=', date('Y-m-d'))
-            ->whereDate('date_fin', '>=', date('Y-m-d'));
-        }]);
+
+
 
         return view('produits.populaire', [
             'produits' => $produits
@@ -79,15 +81,13 @@ class ProduitController extends Controller
                 //récupération de la promo en cours
                 $now = new Carbon();
 
-                $produit->load(['promos' => function ($query) {
-                    $query->whereDate('date_debut', '<=', date('Y-m-d'))
-                    ->whereDate('date_fin', '>=', date('Y-m-d'));
-                }]);
-
                 $produit->load('images');
 
+                $promos = Promo::all();
+
         return view('produits.show',[
-            'produit' => $produit
+            'produit' => $produit,
+            'promos' => $promos
         ]);
     }
 
@@ -163,6 +163,7 @@ class ProduitController extends Controller
       $produit->delete();
 
       return redirect('/dashboard');
+
     }
 
 }

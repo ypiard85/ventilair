@@ -35,6 +35,7 @@ return array(
     'App\\Models\\Categorie' => $baseDir . '/app/Models/Categorie.php',
     'App\\Models\\Commande' => $baseDir . '/app/Models/Commande.php',
     'App\\Models\\Filtre_taille' => $baseDir . '/app/Models/Filtre_taille.php',
+    'App\\Models\\Filtrepoids' => $baseDir . '/app/Models/Filtrepoids.php',
     'App\\Models\\Image' => $baseDir . '/app/Models/Image.php',
     'App\\Models\\Note' => $baseDir . '/app/Models/Note.php',
     'App\\Models\\Produit' => $baseDir . '/app/Models/Produit.php',
