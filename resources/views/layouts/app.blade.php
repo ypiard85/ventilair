@@ -91,6 +91,22 @@
             </form>
         </a>
         @endif
+        <div class="container w-50 text-center p-3">
+            @if(session()->has('message'))
+            <p class="alert alert-success">{{ session()->get('message') }}</p>
+            @endif
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+        </div>
         <main class="py-4">
             @yield('content')
         </main>

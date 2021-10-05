@@ -29,10 +29,10 @@ class CreateProduitsTable extends Migration
             $table->float('poids');
             $table->unsignedBigInteger('type_id');
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
-            $table->unsignedBigInteger('filtre_poids_id')->nullable();
-            $table->foreign('filtre_poids_id')->references('id')->on('filtres_poids')->onDelete('set null');
+            $table->unsignedBigInteger('filtrepoids_id')->nullable();
+            $table->foreign('filtrepoids_id')->references('id')->on('filtrepoids')->onDelete('set null');
             $table->unsignedBigInteger('filtre_tailles_id')->nullable();
-            $table->foreign('filtre_tailles_id')->references('id')->on('filtres_tailles')->onDelete('set null');
+            $table->foreign('filtre_tailles_id')->references('id')->on('filtretailles')->onDelete('set null');
 
 
         });

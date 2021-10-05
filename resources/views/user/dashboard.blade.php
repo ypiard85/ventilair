@@ -23,7 +23,13 @@
             <th scope="row">{{ $produit->id }}</th>
             <td>{{ $produit->nom }}</td>
             <td>{{ $produit->categorie->nom }}</td>
-            <td><a href="" class="me-2">Modifier</a><a href="#">Supprimer</a></td>
+            <td><a href="{{ route('produits.edit', $produit ) }}" class="me-2">Modifier</a>
+                <form action="{{ route('produits.destroy', $produit ) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" onclick="return confirm('Voulez vous supprimer ce produit ? ')">Supprimer</button>
+                </form>
+            </td>
         </tr>
         @endforeach
         </tbody>

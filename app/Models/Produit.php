@@ -9,7 +9,7 @@ use App\Models\Image;
 use App\Models\Favoris;
 use App\Models\Commande;
 use App\Models\Categorie;
-use App\Models\Filtre_poids;
+use App\Models\Filtrepoids;
 use App\Models\Filtre_taille;
 use App\Models\Commande_article;
 use Illuminate\Database\Eloquent\Model;
@@ -33,7 +33,7 @@ class Produit extends Model
         'taille',
         'poids',
         'type_id',
-        'filtre_poids_id',
+        'Filtrepoids_id',
         'filtre_tailles_id',
     ];
 
@@ -49,7 +49,7 @@ class Produit extends Model
 
     public function filtrePoids()
     {
-        return $this->belongsTo(Filtre_poids::class);
+        return $this->belongsTo(Filtrepoids::class);
     }
 
     public function filtreTaille()

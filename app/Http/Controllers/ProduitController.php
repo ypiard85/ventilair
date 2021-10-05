@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Type;
 use App\Models\Promo;
 use App\Models\Produit;
+use App\Models\Categorie;
+use App\Models\Filtrepoids;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -27,7 +30,7 @@ class ProduitController extends Controller
 
         return view('produits.index', [
             'produits' => $produits,
-0        ]);
+        ]);
 
     }
 
@@ -97,6 +100,19 @@ class ProduitController extends Controller
     public function edit($id)
     {
 
+        $produit = Produit::find($id);
+        $categories = Categorie::all();
+        $poids = Filtrepoids::all();
+        $types = Type::all();
+        $produit->load('categorie');
+
+        return view('produits.edit', [
+            'produit' => $produit,
+            'categories' => $categories,
+            'poids' => $poids,
+            'types' => $types
+        ] );
+
     }
 
     /**
@@ -106,9 +122,32 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Produit $produit)
     {
-        //
+
+            $request->validate([
+                'nom' => 'required | string',
+                'categorie_id' => 'required | string',
+                'couleur' => 'required | string',
+                'description' => 'required | string',
+                'description_courte' => 'required | string',
+                'prix' => 'required',
+                'stock' => 'required | integer',
+                'note' => 'required',
+                'taille' => 'required | integer',
+                'poids' => 'required',
+                'type_id' => 'required | integer',
+                'filtrepoids_id' => 'required',
+                'filtre_tailles_id' => 'required',
+            ]);
+
+
+
+            $produit->update($request->all());
+
+
+            return back()->with('message','Produit modifier avec succès');
+
     }
 
     /**
@@ -119,7 +158,11 @@ class ProduitController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $produit = Produit::find($id);
+
+      $produit->delete();
+
+      return redirect('/dashboard');
     }
 
 }
