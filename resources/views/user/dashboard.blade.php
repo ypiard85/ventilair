@@ -52,6 +52,7 @@
           <tr>
             <td>{{ $categorie->nom }}</td>
             <td>
+              <a href="{{ route('produits.edit', $produit ) }}" class="me-2">Modifier</a>
               <form action="{{ route('categories.destroy', $categorie ) }}" method="post">
                 @csrf
                 @method('delete')

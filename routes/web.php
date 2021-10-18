@@ -41,6 +41,7 @@ Route::post('remove/{produit}' , [PanierController::class, 'remove'])->name('rem
 Route::get('/', [HomeController::class, 'index' ] )->name('homepage');
 
 Route::get('/categories', [ProduitController::class, 'categories' ] )->name('produit_categorie');
+Route::get('/categories/edit/{categorie}', [ProduitController::class, 'categories' ] )->name('categorie_edit');
 
 Route::post('/deleteuser/{user}', [HomeController::class, 'deleteuser'] )->name('deleteuser');
 
