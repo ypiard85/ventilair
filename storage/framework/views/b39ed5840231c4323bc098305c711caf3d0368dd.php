@@ -55,7 +55,8 @@
 
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="">Profil</a>
+                                <a class="dropdown-item" href="<?php echo e(route('user.index')); ?>">Profil</a>
+                                <a class="dropdown-item" href="<?php echo e(route('commande.index')); ?>">Mes commandes</a>
                                 <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

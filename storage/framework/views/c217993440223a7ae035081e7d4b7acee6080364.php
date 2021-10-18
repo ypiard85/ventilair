@@ -1,6 +1,8 @@
 
 
 <?php $__env->startSection('content'); ?>
+dd
+
 <section class="mt-5 container">
             <table class="col-md-12 table table-hover">
 
@@ -12,6 +14,8 @@
                     </tr>
                 </thead>
                 <?php $__currentLoopData = $commandesdetails; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $commandes): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php echo e(dd($commandes)); ?>
+
                 <h2>Commande n°<?php echo e($commandes->numero); ?> pour un montant de <?php echo e($commandes->prix); ?>€ TTC</h2>
 
                     <tbody>

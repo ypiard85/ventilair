@@ -25,10 +25,10 @@ Route::get('populaires', [ProduitController::class, 'populaires'])->name('produi
 
 Route::get('/dashboard', [UserController::class, 'dashboard' ] )->name('dashboard');
 
-Route::resource('paniers', PanierController::class);
-
+Route::resource('paniers', PanierController::class,);
 Route::post('viderpanier', [PanierController::class, 'empty'])->name('empty_panier');
 Route::post('remove/{produit}' , [PanierController::class, 'remove'])->name('remove_panier');
+Route::get('validationpanier' , [PanierController::class, 'validation'])->name('validation_panier');
 
 Route::get('/', [HomeController::class, 'index' ] )->name('homepage');
 
@@ -38,3 +38,8 @@ Route::post('/deleteuser/{user}', [HomeController::class, 'deleteuser'] )->name(
 // Concernant les commandes
 
 Route::resource('/commande', App\Http\Controllers\CommandeController::class);
+
+// Concernant le compte client
+Route::resource('/user', App\Http\Controllers\UserController::class);
+
+Route::resource('/adresse', App\Http\Controllers\AdresseController::class);
