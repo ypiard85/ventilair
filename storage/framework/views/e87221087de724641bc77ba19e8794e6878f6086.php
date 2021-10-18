@@ -2,6 +2,7 @@
 
 <?php $__env->startSection('content'); ?>
 <section class="mt-5 container">
+    <h1>Vos commandes</h1>
     <table class="col-md-12 table table-hover">
 
         <thead>
@@ -20,16 +21,8 @@
                 <td><?php echo e($commande->created_at); ?></td>
                 <td><?php echo e($commande->prix); ?>€</td>
                 <td>
-
-                    <form action="commande.php" method="POST">
-                        <?php echo csrf_field(); ?>
-                        <?php echo method_field('PUT'); ?>
-                        <input name="number" type="hidden" value="numero">
-                        <input name="id" type="hidden" value="id">
-                        <input class="btn btn-warning" type="submit" value="Détails">
-                    </form>
+<a href="<?php echo e(route('commande.show', $commande )); ?>" class="btn btn-warning">Détails</a>
                 </td>
-                csrf_field
             </tr>
         </tbody>
 

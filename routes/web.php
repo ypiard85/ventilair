@@ -23,7 +23,7 @@ Route::resource('produits', ProduitController::class);
 Route::get('populaires', [ProduitController::class, 'populaires'])->name('produits_populaires');
 
 
-Route::resource('paniers', PanierController::class);
+Route::resource('paniers', PanierController::class,);
 Route::post('viderpanier', [PanierController::class, 'empty'])->name('empty_panier');
 Route::post('remove/{produit}' , [PanierController::class, 'remove'])->name('remove_panier');
 Route::get('validationpanier' , [PanierController::class, 'validation'])->name('validation_panier');

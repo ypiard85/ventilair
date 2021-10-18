@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <section class="mt-5 container">
             <table class="col-md-12 table table-hover">
 
@@ -11,12 +13,10 @@
                         <th scope="col">Quantité</th>
                     </tr>
                 </thead>
-                @foreach($commandesdetails as $commandes)
-                {{ dd($commandes) }}
-                <h2>Commande n°{{ $commandes->numero}} pour un montant de {{ $commandes->prix}}€ TTC</h2>
+                <h2>Commande n°{{ $commande->numero}} pour un montant de {{ $commande->prix}}€ TTC</h2>
 
                     <tbody>
-                    @foreach($commandes->produits as $produit)
+                    @foreach($commande->produits as $produit)
                         <tr>
                             <td>{{ ($produit->nom) }}</td>
                             <td>{{ ($produit->prix) }}</td>
@@ -28,9 +28,6 @@
                         @endforeach
 
                     </tbody>
-                    
-
-                    @endforeach
                     
                     
             </table>

@@ -16,7 +16,6 @@ class PanierController extends Controller
      */
     public function index()
     {
-
         return view('panier.index');
     }
 
@@ -27,19 +26,20 @@ class PanierController extends Controller
      */
     public function create(Produit $produit, Request $request)
     {
-
     }
 
-    public function validation() {
+    public function validation()
+    {
         $panier = session()->get('panier');
         return view('panier.validation', compact('panier'));
     }
 
+
     public function remove(Produit $produit)
     {
         $panier = session()->get("panier"); // On récupère le panier en session
-		unset($panier[$produit->id]); // On supprime le produit du tableau $basket
-		session()->put("panier", $panier);
+        unset($panier[$produit->id]); // On supprime le produit du tableau $basket
+        session()->put("panier", $panier);
 
         return redirect('/paniers');
     }
@@ -58,21 +58,20 @@ class PanierController extends Controller
 
         $produit = Produit::find($request->produit_id);
 
-            $produit_detail = [
-                'id' => $produit->id,
-                'description' => $produit->description_courte,
-                'nom' => $produit->nom,
-                'image' => $produit->images,
-                'prix' => $produit->prix,
-                'quantite' => $request->quantite,
-            ];
+        $produit_detail = [
+            'id' => $produit->id,
+            'description' => $produit->description_courte,
+            'nom' => $produit->nom,
+            'image' => $produit->images,
+            'prix' => $produit->prix,
+            'quantite' => $request->quantite,
+        ];
 
 
         $panier[$produit->id] = $produit_detail;
         session()->put("panier", $panier);
 
         return redirect('/paniers');
-
     }
 
     public function empty()

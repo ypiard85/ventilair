@@ -17,9 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @php $total = 0 @endphp
             @foreach(session("panier") as $key => $produit)
-            @php $total += $produit['prix'] * $produit['quantite'] @endphp
             <tr>
                     <th>{{ $produit['nom'] }}</th>
                     <th>{{ $produit['prix'] }} €</th>
@@ -45,12 +43,12 @@
     </table>
                 <table class="table mt-5">
                     <tr>
-                        <td>Nombre de produits</td>
+                        <td>Nombre de produits différents</td>
                         <td>Total</td>
                     </tr>
                     <tr>
                         <td>{{ count(session('panier')) }}</td>
-                        <td>{{ $total }} €</td>
+                        <td> {{ totalPrice()}} €</td>
                     </tr>
                 </table>
         </tbody>

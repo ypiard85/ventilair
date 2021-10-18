@@ -105,7 +105,7 @@ class AdresseController extends Controller
         $adresse->rue = $request->input('rue');
         $adresse->code_postal = $request->input('code_postal');
         $adresse->ville = $request->input('ville');
-        
+
 
         if ($request->input('defaut')) {
             $id = Auth::user()->id;
@@ -119,7 +119,7 @@ class AdresseController extends Controller
         }
 
         $adresse->save();
- 
+
 
         return back()->with('message', 'Nouvelle adresse enregistrée avec succès');
     }
@@ -133,6 +133,13 @@ class AdresseController extends Controller
     public function destroy(Adresse $adresse)
     {
         $adresse->delete();
+        $id = Auth::user()->id;
+        $user = User::where('id', $id)->get();
+        $user->load('adresses');
+        $adressetoreset = $user->first()->adresses->where('defaut', 0);
+        $adressetoreset = $adressetoreset->first();
+        $adressetoreset->defaut = 1;
+        $adressetoreset->save();
         return back()
             ->with('message', 'Félicitations, votre adresse est supprimée');
     }

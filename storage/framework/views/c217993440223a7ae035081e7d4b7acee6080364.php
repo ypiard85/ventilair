@@ -1,6 +1,8 @@
 
 
 <?php $__env->startSection('content'); ?>
+dd
+
 <section class="mt-5 container">
             <table class="col-md-12 table table-hover">
 

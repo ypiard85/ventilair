@@ -55,13 +55,10 @@ class CommandeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Commande $commande)
     {
-        $id = Auth::user()->id; 
-        $commandesdetails = Commande::where('user_id', $id)->get();
-        $commandesdetails->load('produits');
-        $commandesdetails->toArray();
-        return view('commandes.show', compact('commandesdetails'));
+        $commande->load('produits');
+        return view('commandes\show', compact('commande'));
     }
 
     /**
