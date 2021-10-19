@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produit;
 use App\Models\Promo;
 use Illuminate\Http\Request;
 
@@ -28,18 +29,39 @@ class CampagneController extends Controller
      */
     public function create()
     {
-        //
+        $produits = Produit::all();
+
+        return view('campagnes.create', compact('produits'));
+
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly cre²ated resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+
+
+       $data = $request->validate([
+            'nom' => 'required | string',
+            'date_debut' => 'required | date',
+            'date_fin' => 'required | date',
+            'reduction' => 'required | int'
+        ]);
+
+        $produit = Produit::all();
+
+
+        dd($request->get('product_id'));
+
+        $campagne = Promo::create($data);
+
+        //attach->
+        //dettach->
+
     }
 
     /**
@@ -61,7 +83,9 @@ class CampagneController extends Controller
      */
     public function edit($id)
     {
-        //
+        $campagne = Promo::find($id);
+
+        return view('campagnes.edit', compact('campagne'));
     }
 
     /**
@@ -71,9 +95,18 @@ class CampagneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Promo $campagne)
     {
-        //
+        $request->validate([
+            'nom' => 'string',
+            'date_debut' => 'date',
+            'date_fin' => 'date',
+            'reduction' => 'int'
+        ]);
+
+        $campagne->update($request->all());
+
+        return back()->with('message', 'Promo modifier avec succè');
     }
 
     /**
@@ -84,6 +117,11 @@ class CampagneController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $promo = Promo::find($id);
+
+        $promo->delete();
+
+        return redirect('/dashboard');
     }
 }

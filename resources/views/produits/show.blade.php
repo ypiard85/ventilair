@@ -3,10 +3,11 @@
 @section('content')
 
 <div class="container">
-    @foreach($produit->images as $image )
     <div class="row">
         <div class="col-md-5">
+            @foreach($produit->images as $image )
             <img class="w-100" src="{{ asset("images/$image->name") }}" alt="image">
+            @endforeach
         </div>
         <div class="col-md-7">
             <h3><span class="badge bg-secondary mt-2">{{ $produit->categorie->nom }}</span></h3>
@@ -34,7 +35,6 @@
             </form>
         </div>
     </div>
-    @endforeach
 </div>
 
 @endsection

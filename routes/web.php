@@ -25,6 +25,10 @@ Auth::routes();
 Route::resource('produits', ProduitController::class);
 Route::resource('categories', CategorieController::class);
 
+Route::get('/categorie', [ProduitController::class, 'categories' ] )->name('produit_categorie');
+
+Route::post('/ajout/image/', [ProduitController::class, 'AjoutImageProduit' ] )->name('ajout_image_produit');
+
 
 Route::resource('campagnes', CampagneController::class);
 
@@ -40,8 +44,6 @@ Route::post('remove/{produit}' , [PanierController::class, 'remove'])->name('rem
 
 Route::get('/', [HomeController::class, 'index' ] )->name('homepage');
 
-Route::get('/categories', [ProduitController::class, 'categories' ] )->name('produit_categorie');
-Route::get('/categories/edit/{categorie}', [ProduitController::class, 'categories' ] )->name('categorie_edit');
 
 Route::post('/deleteuser/{user}', [HomeController::class, 'deleteuser'] )->name('deleteuser');
 

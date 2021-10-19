@@ -29,6 +29,6 @@ class CreateFiltreTaillesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('filtre_tailles');
+        Schema::dropIfExists('Filtretailles');
     }
 }

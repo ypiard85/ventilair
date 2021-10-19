@@ -31,7 +31,7 @@ class ProduitsSeeder extends Seeder
                 'taille' => rand(1, 200),
                 'poids' => rand(1, 35),
                 'Filtrepoids_id' => rand(1, 4),
-                'filtre_tailles_id' => rand(1, 4),
+                'Filtretailles_id' => rand(1, 4),
             ]);
         }
     }

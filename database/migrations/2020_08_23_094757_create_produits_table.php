@@ -31,8 +31,8 @@ class CreateProduitsTable extends Migration
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
             $table->unsignedBigInteger('filtrepoids_id')->nullable();
             $table->foreign('filtrepoids_id')->references('id')->on('filtrepoids')->onDelete('set null');
-            $table->unsignedBigInteger('filtre_tailles_id')->nullable();
-            $table->foreign('filtre_tailles_id')->references('id')->on('filtretailles')->onDelete('set null');
+            $table->unsignedBigInteger('Filtretailles_id')->nullable();
+            $table->foreign('Filtretailles_id')->references('id')->on('filtretailles')->onDelete('set null');
 
 
         });

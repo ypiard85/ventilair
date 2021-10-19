@@ -11,9 +11,8 @@
             <div class="card mb-3">
                 <div class="card-header">
                    <p>{{ $produit->categorie->nom }}</p>
-
                     @foreach($produit->images as $image)
-                    <img src="{{ asset("images/$image->name ") }}" class="w-100 shadow" alt="image">
+                        <img src="{{ asset("images/$image->name") }} " class="w-100 shadow" alt="image">
                     @endforeach
                 </div>
                 <div class="card-body">

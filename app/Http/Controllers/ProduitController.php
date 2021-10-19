@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Type;
+use App\Models\Image;
 use App\Models\Promo;
 use App\Models\Produit;
 use App\Models\Categorie;
 use App\Models\Filtrepoids;
+use App\Models\Filtretaille;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\File\File;
 
 class ProduitController extends Controller
 {
@@ -56,10 +59,12 @@ class ProduitController extends Controller
                 $categories = Categorie::all();
                 $categories->load('produits.images');
                 $promos = Promo::all();
+
         return view('produits.categories', [
             'categories' => $categories,
             'promos' => $promos
         ]);
+
     }
 
     /**
@@ -69,7 +74,15 @@ class ProduitController extends Controller
      */
     public function create()
     {
-        //
+
+        $categories = Categorie::all();
+        $poids = Filtrepoids::all();
+        $types = Type::all();
+        $tailles = Filtretaille::all();
+
+
+        return view('produits.create', compact('categories', 'types', 'poids', 'tailles') );
+
     }
 
     /**
@@ -80,7 +93,54 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+       $data = $request->validate([
+                'nom' => 'required | string',
+                'categorie_id' => 'required | string',
+                'couleur' => 'required | string',
+                'description' => 'required | string',
+                'description_courte' => 'required | string',
+                'prix' => 'required',
+                'stock' => 'required | integer',
+                'note' => 'required',
+                'taille' => 'required | integer',
+                'poids' => 'required',
+                'type_id' => 'required | integer',
+                'filtrepoids_id' => 'required',
+                'Filtretailles_id' => 'required',
+        ]);
+
+
+        $produit = Produit::create($data);
+        $this->AddImage($request, $produit->id);
+
+        return redirect()->route('dashboard');
+    }
+
+    public function AddImage(Request $request, $idproduit){
+
+        $request->validate([
+            'filenames' => 'required',
+            'filenames.*' => 'image'
+        ]);
+
+        if($request->hasfile('filenames'))
+         {
+
+            foreach($request->file('filenames') as $file)
+            {
+
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move(public_path('images'), $name);
+
+                $file= new Image();
+                $file->name = $name;
+                $file->produit_id = $idproduit;
+                $file->save();
+            }
+         }
+
+
     }
 
     /**
@@ -117,16 +177,19 @@ class ProduitController extends Controller
         $categories = Categorie::all();
         $poids = Filtrepoids::all();
         $types = Type::all();
+        $tailles = Filtretaille::all();
         $produit->load('categorie');
 
         return view('produits.edit', [
             'produit' => $produit,
             'categories' => $categories,
             'poids' => $poids,
-            'types' => $types
-        ] );
+            'types' => $types,
+            'tailles' => $tailles
+        ]);
 
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -151,15 +214,23 @@ class ProduitController extends Controller
                 'poids' => 'required',
                 'type_id' => 'required | integer',
                 'filtrepoids_id' => 'required',
-                'filtre_tailles_id' => 'required',
+                'Filtretailles_id' => 'required',
             ]);
-
-
 
             $produit->update($request->all());
 
 
             return back()->with('message','Produit modifier avec succès');
+
+    }
+
+    public function AjoutImageProduit(Request $request)
+    {
+
+
+        $this->AddImage($request, $request->get('ajoutimageproduit'));
+
+        return back()->with('message','Produit modifier avec succès');
 
     }
 

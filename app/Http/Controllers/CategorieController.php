@@ -24,7 +24,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorie.create');
     }
 
     /**
@@ -35,7 +35,15 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nom' => 'string'
+        ]);
+
+        Categorie::create($data);
+
+        
+
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -57,7 +65,8 @@ class CategorieController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Categorie::find($id);
+        return view('categorie.edit', compact('category'));
     }
 
     /**
@@ -67,9 +76,16 @@ class CategorieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Categorie $category)
     {
-        //
+        $request->validate([
+            'nom' => 'string'
+        ]);
+
+        $category->update($request->all());
+
+        return back()->with('message', 'Categorie modifier avec success');
+
     }
 
     /**

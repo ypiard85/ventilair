@@ -5,13 +5,36 @@
 
 <div class="container">
 
-      <h1>Modification de "{{ $produit->nom }}" </h1>
+    <h1>Modification de "{{ $produit->nom }}" </h1>
+
+    <form action="{{ route('ajout_image_produit') }}" method="post">
+        @csrf
+        @method('post')
+        <div class="input-group hdtuto control-group lst increment" >
+            <input type="hidden" value="{{ $produit->id }}" name="ajoutimageproduit">
+            <input type="file" name="filenames[]" class="myfrm form-control">
+            <div class="input-group-btn">
+              <button class="btn btn-success" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
+            </div>
+          </div>
+          <div class="clone hide">
+            <div class="hdtuto control-group lst input-group" style="margin-top:10px">
+              <input type="file" name="filenames[]" class="myfrm form-control">
+              <div class="input-group-btn">
+                <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-success mt-3">Enregistrer</button>
+    </form>
 
 
     <form action="{{ route('produits.update', $produit) }}" method="post">
         @csrf
         @method('put')
         <div class="row">
+
+
             <label for="nom" class="col-md-11 mb-3">
                 <span>Nom :</span>
                 <input type="text" value="{{ $produit->nom }}" name="nom" class="form-control">
@@ -63,9 +86,13 @@
                 <span>Taille (cm) :</span>
                 <input type="number" min="1" name="taille" value="{{ $produit->taille }}" class="form-control" >
             </label>
-            <label for="filtre_tailles_id" class="col-md-1">
+            <label for="Filtretailles_id" class="col-md-1">
                 <span>Filtre Taille:</span>
-                <input type="text" name="filtre_tailles_id" value="{{ $produit->filtre_tailles_id }}" class="form-control" >
+                <select name="Filtretailles_id" class=" form-control" >
+                    @foreach ($tailles as $taille)
+                    <option value="{{ $taille->id }}">{{ $taille->intervalle }}</option>
+                    @endforeach
+                </select>
             </label>
 
             <label for="poids" class="col-md-1" >
@@ -87,5 +114,15 @@
     </form>
 
 </div>
-
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".btn-success").click(function(){
+          var lsthmtl = $(".clone").html();
+          $(".increment").after(lsthmtl);
+      });
+      $("body").on("click",".btn-danger",function(){
+          $(this).parents(".hdtuto").remove();
+      });
+    });
+</script>
 @endsection

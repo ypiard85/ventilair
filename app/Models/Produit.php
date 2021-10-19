@@ -10,7 +10,7 @@ use App\Models\Favoris;
 use App\Models\Commande;
 use App\Models\Categorie;
 use App\Models\Filtrepoids;
-use App\Models\Filtre_taille;
+use App\Models\Filtretaille;
 use App\Models\Commande_article;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -34,7 +34,7 @@ class Produit extends Model
         'poids',
         'type_id',
         'Filtrepoids_id',
-        'filtre_tailles_id',
+        'Filtretailles_id',
     ];
 
     public function commandes()
@@ -54,7 +54,7 @@ class Produit extends Model
 
     public function filtreTaille()
     {
-        return $this->belongsTo(Filtre_taille::class);
+        return $this->belongsTo(Filtretaille::class);
     }
 
     public function categorie()
