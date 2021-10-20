@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\CampagneController;
+use App\Http\Controllers\CategorieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,17 @@ use App\Http\Controllers\ProduitController;
 Auth::routes();
 
 Route::resource('produits', ProduitController::class);
+Route::resource('categories', CategorieController::class);
+
+Route::get('/categorie', [ProduitController::class, 'categories' ] )->name('produit_categorie');
+
+Route::post('/ajout/image/', [ProduitController::class, 'AjoutImageProduit' ] )->name('ajout_image_produit');
+
+
+Route::resource('campagnes', CampagneController::class);
+
 Route::get('populaires', [ProduitController::class, 'populaires'])->name('produits_populaires');
+
 
 Route::get('/dashboard', [UserController::class, 'dashboard' ] )->name('dashboard');
 
@@ -34,6 +46,7 @@ Route::get('/', [HomeController::class, 'index' ] )->name('homepage');
 
 
 Route::post('/deleteuser/{user}', [HomeController::class, 'deleteuser'] )->name('deleteuser');
+
 
 // Concernant les commandes
 

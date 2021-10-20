@@ -14,19 +14,19 @@ class PoidsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('filtres_poids')->insert([
+        DB::table('filtrepoids')->insert([
             'intervalle' => '0 à 5',
             'created_at' => now()
         ]);
-        DB::table('filtres_poids')->insert([
+        DB::table('filtrepoids')->insert([
             'intervalle' => '6 à 10',
             'created_at' => now()
         ]);
-        DB::table('filtres_poids')->insert([
+        DB::table('filtrepoids')->insert([
             'intervalle' => '11 à 15',
             'created_at' => now()
         ]);
-        DB::table('filtres_poids')->insert([
+        DB::table('filtrepoids')->insert([
             'intervalle' => '16 et plus',
             'created_at' => now()
         ]);

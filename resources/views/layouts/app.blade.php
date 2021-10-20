@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -34,11 +34,17 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a href="{{ route('campagnes.index') }}" class="nav-link">Campagnes</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Produits
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="nav-link dropdown-item" href="{{ route('produit_categorie') }}">
+                                    Categories
+                                </a>
                                 <a class="nav-link dropdown-item" href="{{ route('produits.index') }}">
                                     Tout les produits
                                 </a>
@@ -91,6 +97,22 @@
             </form>
         </a>
         @endif
+        <div class="container w-50 text-center p-3">
+            @if(session()->has('message'))
+            <p class="alert alert-success">{{ session()->get('message') }}</p>
+            @endif
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+        </div>
         <main class="py-4">
             @yield('content')
         </main>

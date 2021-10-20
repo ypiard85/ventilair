@@ -37,6 +37,7 @@ class ComposerStaticInit8d927cf14b9b110d97b7dd81a9374b89
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
+        '990cb287b076524f7598c3ee7932ed43' => __DIR__ . '/../..' . '/app/helpers/ShowPromos.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -576,6 +577,7 @@ class ComposerStaticInit8d927cf14b9b110d97b7dd81a9374b89
         'App\\Models\\Categorie' => __DIR__ . '/../..' . '/app/Models/Categorie.php',
         'App\\Models\\Commande' => __DIR__ . '/../..' . '/app/Models/Commande.php',
         'App\\Models\\Filtre_taille' => __DIR__ . '/../..' . '/app/Models/Filtre_taille.php',
+        'App\\Models\\Filtrepoids' => __DIR__ . '/../..' . '/app/Models/Filtrepoids.php',
         'App\\Models\\Image' => __DIR__ . '/../..' . '/app/Models/Image.php',
         'App\\Models\\Note' => __DIR__ . '/../..' . '/app/Models/Note.php',
         'App\\Models\\Produit' => __DIR__ . '/../..' . '/app/Models/Produit.php',

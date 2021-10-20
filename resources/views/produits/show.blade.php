@@ -3,17 +3,21 @@
 @section('content')
 
 <div class="container">
-    @foreach($produit->images as $image )
     <div class="row">
         <div class="col-md-5">
+            @foreach($produit->images as $image )
             <img class="w-100" src="{{ asset("images/$image->name") }}" alt="image">
+            @endforeach
         </div>
         <div class="col-md-7">
+            <h3><span class="badge bg-secondary mt-2">{{ $produit->categorie->nom }}</span></h3>
             <h1>{{ $produit->nom }}</h1>
-            @if(isset($produit->promos[0]))
+            @php $promo = showPromo($promos, $produit->id ); @endphp
+            @if($promo)
             <p>
                 <del>{{ $produit->prix }} €</del>
                 <span class="fs-3" >{{ $produit->prix -  $produit->prix * ($produit->promos[0]->reduction / 100)  }} €</span>
+                <h5><span class="badge bg-success mt-2">{{ $produit->promos[0]->nom }}</span></h5>
             </p>
             @else
                 <h3>{{ $produit->prix }} €</h3>
@@ -31,7 +35,6 @@
             </form>
         </div>
     </div>
-    @endforeach
 </div>
 
 @endsection
