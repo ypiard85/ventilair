@@ -29,9 +29,10 @@
         <?php if($promos != null): ?>
             <?php $__currentLoopData = $promos->produits; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $produit): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php $__currentLoopData = $produit->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <img src="<?php echo e(asset("images/$image->name")); ?>" class="w-100 shadow" alt="">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <p class="p-2"><?php echo e($produit->categorie->nom); ?></p>
+                            <img src="<?php echo e(asset("images/$image->name")); ?>" class="w-100 shadow" alt="">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo e($produit->nom); ?></h5>
                                     <p>

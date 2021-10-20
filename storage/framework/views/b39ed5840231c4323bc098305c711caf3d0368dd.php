@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <title><?php echo e(config('app.name', 'Laravel')); ?></title>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
 
@@ -31,15 +31,21 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a href="<?php echo e(route('campagnes.index')); ?>" class="nav-link">Campagnes</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Produits
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="nav-link dropdown-item" href="<?php echo e(route('produit_categorie')); ?>">
+                                    Categories
+                                </a>
                                 <a class="nav-link dropdown-item" href="<?php echo e(route('produits.index')); ?>">
                                     Tout les produits
                                 </a>
@@ -94,6 +100,22 @@
             </form>
         </a>
         <?php endif; ?>
+        <div class="container w-50 text-center p-3">
+            <?php if(session()->has('message')): ?>
+            <p class="alert alert-success"><?php echo e(session()->get('message')); ?></p>
+            <?php endif; ?>
+
+            <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+            <?php endif; ?>
+
+        </div>
         <main class="py-4">
             <?php echo $__env->yieldContent('content'); ?>
         </main>
