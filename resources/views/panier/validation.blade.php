@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-
+@php $lastTotal = session()->get("lastTotal"); @endphp
 <div class="container">
 
     <h3>Panier</h3>
     <div class="row">
-        <div class="col-md-6">
+        <h4>Contenu du panier</h4>
+        <div class="col-md-12">
             @if(session()->has('panier') AND count(session("panier")) > 0 )
             <table class="table table-hover">
                 <thead>
@@ -18,26 +19,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @php $total = 0 @endphp
                     @foreach(session("panier") as $key => $produit)
-                    @php $total += $produit['prix'] * $produit['quantite'] @endphp
+                    @php $promo = showPromo($promos, $produit['id'] );
+                    $prixpromo = $produit['prix'] - $produit['prix'] * ($promo->reduction / 100); @endphp
+
                     <tr>
                         <th>{{ $produit['nom'] }}</th>
+                        @if($promo)
+                        <th>{{ $prixpromo }}
+                            €</th>
+                        @else
                         <th>{{ $produit['prix'] }} €</th>
+                        @endif
                         <th>{{ $produit['quantite'] }}</th>
-                        <th>{{ $produit['prix'] * $produit['quantite'] }} €</th>
+                        <th>@php
+                            $prixpromototalproduit = $prixpromo * $produit['quantite']; @endphp
+                            {{$prixpromototalproduit}} €
+                        </th>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
             <table class="table mt-5">
                 <tr>
-                    <td>Nombre de produits</td>
+                    <td>Nombre de produit(s) différent(s)</td>
+                    @php totalPrice() @endphp
                     <td>Total</td>
                 </tr>
                 <tr>
                     <td>{{ count(session('panier')) }}</td>
+                    <td>{{$lastTotal}}€</td>
                 </tr>
+
             </table>
             </tbody>
             </table>
@@ -48,42 +61,171 @@
 
 
 
-        <div class="col-md-6">
-            <form action="" method="POST">
+        <div class="col-md-12 mt-5">
+            <div class="row mb-5">
 
-                <div class="basketamount__userinformations col-md-12 bg-warning pt-2 pb-2 me-2">
-                    <p class="basketamount__userinformationstitle basketpage__title border border-warning">Vos informations</p>
-                    <input type="text" class="input-text" name="street" placeholder="Nom de rue" minlength="2" maxlength="30" pattern="[A-Za-z -éàâêèç][^0-9]{2,30}" required>
-                    <input type="text" class="input-text" name="number" placeholder="Numéro de rue" minlength="1" maxlength="4" pattern="[0-9]{1,4}" required>
-                    <input type="text" class="input-text" name="zipcode" placeholder="Code postal" minlength="5" maxlength="5" pattern="[0-9]{5}" required>
-                    <input type="text" class="input-text" name="city" placeholder="Ville" minlength="2" maxlength="30" pattern="[A-Za-z -éàâêèç][^0-9]{2,30}" required>
+                <h4>Mes adresses</h4>
+                @if (count($user[0]->adresses) > 0)
+                @foreach($user[0]->adresses as $adresse)
+                <div class="col-md-6">
+                    <div class="card-header">
+                        <h5>{{ __('Adresse postale n°') }}
+                            {{ $loop->iteration }}
+                        </h5>
+                    </div>
+                    <form method="POST" action="{{ route('adresse.update', $adresse) }}">
+
+                        @csrf
+                        @method ('PUT')
+
+
+                        <div class="form-group row">
+                            <label for="numero" class="col-md-4 col-form-label text-md-right">{{ __('Numéro de rue') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="numero" type="text" class="form-control @error('name') is-invalid @enderror" name="numero" value="{{ $adresse->numero }}" required autofocus>
+
+                                @error('numero')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="rue" class="col-md-4 col-form-label text-md-right">{{ __('Nom de rue') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="rue" type="text" class="form-control @error('name') is-invalid @enderror" name="rue" autocomplete="street-address" value="{{ $adresse->rue }}" required autofocus>
+
+                                @error('rue')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="code_postal" class="col-md-4 col-form-label text-md-right">{{ __('Code postal') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="code_postal" type="text" class="form-control @error('name') is-invalid @enderror" name="code_postal" autocomplete="postal-code" value="{{ $adresse->code_postal }}" required autofocus>
+
+                                @error('code_postal')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="ville" class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="ville" type="text" class="form-control @error('name') is-invalid @enderror" name="ville" autocomplete="address-level2" value="{{ $adresse->ville }}" required autofocus>
+
+                                @error('ville')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="m-1 btn btn-success">
+                                    {{ __('Enregistrer cette adresse') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
+                @endforeach
+                @endif
+                <form class="row" method="POST" action="{{ route('commande.store') }}">
+                    @csrf
+                    <div class="col-md-6 mt-5 mb-5">
+                        <div class="card-header">
+                            <h5>{{ __('Adresse de facturation') }}
+                            </h5>
+                        </div>
+                        <div>
+                            <select name="adressefacturation" class="form-select" aria-label="Default select example">
+                                <option value="0" selected>Sélectionnez votre adresse de facturation</option>
+                                @foreach($user[0]->adresses as $adresse)
+                                <option value="{{$adresse->id}}">{{$adresse->numero . ' ' . $adresse->rue . ' ' . $adresse->code_postal . ' ' . $adresse->ville}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
-                <!-- Button trigger modal -->
-                <div class="basketamount__total col text-center border border-success d-flex flex-column justify-content-center">
-                    @php totalPrice() @endphp
-                    <p class="basketamount__totalprice">Montant des frais de port : @if($total > 6600) 
-                    @php 
-                    $freedelivery = true;
-                    $deliveryprice = 0; 
-                    @endphp
-                    {{'Gratuit'}}
-                    
-                    @else 
-                    @php 
-                    $freedelivery = false;
-                    $deliveryprice = 59;
-                    $total += $deliveryprice; 
-                    @endphp 
-                    {{$deliveryprice}}{{'€'}}@endif </p>
-                    <p class="basketamount__totalprice">Total de votre commande : {{ $total }}€</p>
+                    <div class="col-md-6 mt-5 mb-5">
+                        <div class="card-header">
+                            <h5>{{ __('Adresse de livraison') }}
+                            </h5>
+                        </div>
+                        <div>
+                            <select name="adresselivraison" class="form-select" aria-label="Default select example">
+                                <option value="0" selected>Sélectionnez votre adresse de livraison</option>
+                                @foreach($user[0]->adresses as $adresse)
+                                <option value="{{$adresse->id}}">{{$adresse->numero . ' ' . $adresse->rue . ' ' . $adresse->code_postal . ' ' . $adresse->ville}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
-                    <button type="button" class="basketamount__totalsubmit btn btn-success col-md-12" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        Je valide ma commande
-                    </button>
-                </div>
-            </form>
+                    <h4>Mode d'expédition</h4>
+                    <div class="col-md-6 mt-5 mb-5">
+                        <div>
+                            <select name="livraison" id="livraison" class="form-select" aria-label="Default select example" onchange="valueTest()">
+                                <option value="0" selected>Sélectionnez votre mode de livraison</option>
+                                @if($lastTotal > 1200)
+
+                                <option value="1">Livraison offerte (+0€)</option>
+
+
+                                @else
+
+                                <option value="15">Livraison en 7 jours ouvrés (+15€)</option>@endif
+
+                                <option value="30">Livraison en 2 jours ouvrés (+30€)</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Button trigger modal -->
+                    <div class="basketamount__total col text-center border border-success d-flex flex-column justify-content-center">
+                        <p id="basketamount_totalprice" class="basketamount__totalprice">Total de votre commande : {{ $lastTotal }}€</p>
+                        <input name="totalAmount" id="totalamount" type="hidden" value="{{ $lastTotal }}">
+
+
+                        <button type="submit" class="basketamount__totalsubmit btn btn-success col-md-12">
+                            Je valide ma commande
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-@endsection
+    <script type="text/javascript">
+        function valueTest() {
+            let livraison = document.getElementById("livraison");
+            let valeurLivraison = livraison.value;
+            if (valeurLivraison == 1) {
+                valeurLivraison = 0;
+            }
+            let valeurTotal = <?php echo $lastTotal; ?>;
+            let totalActuel = document.getElementById("totalamount").value;
+            totala = parseFloat(valeurLivraison) + parseFloat(valeurTotal);
+            document.getElementById("totalamount").value = totala;
+            document.getElementById("basketamount_totalprice").innerHTML = 'Total de votre commande : ' + totala + '€';
+        }
+    </script>
+    @endsection

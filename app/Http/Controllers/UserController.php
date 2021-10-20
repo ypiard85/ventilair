@@ -25,12 +25,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $id = Auth::user()->id;
-        $user = User::where('id', $id)->get();
+        $user = User::find(auth()->user()->id);
         $user->load('adresses');
-        $user = $user->first();
-        $adresse = $user->first()->adresses->where('defaut', 1);
-        $adresse = $adresse->first();
+        $adresse = $user->adresses->where('defaut', 1)->first();
         return view('users.index', compact('user', 'adresse'));
     }
 

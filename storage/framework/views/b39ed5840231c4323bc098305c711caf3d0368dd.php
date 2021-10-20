@@ -94,7 +94,6 @@
             </form>
         </a>
         <?php endif; ?>
-
         <main class="py-4">
             <?php echo $__env->yieldContent('content'); ?>
         </main>

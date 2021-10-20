@@ -11,7 +11,9 @@
                     <p>{{ __('Votre pseudo :') }} {{$user->pseudo}}</p>
                     <p>{{ __('Votre email :') }} {{$user->email}}</p>
                     <p>{{ __('Votre mot de passe : •••••••••••') }}</p>
+                    @if($adresse)
                     <p>{{ __('Votre adresse :') }} {{$adresse->numero . ' ' . $adresse->rue . ' ' . $adresse->code_postal . ' ' . $adresse->ville}} </p>
+                    @endif
                 </div>
 
             </div>

@@ -18,10 +18,8 @@ class CreateCommandeProduitsTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('produit_id');
             $table->foreign('produit_id')->references('id')->on('produits')->onDelete('cascade');
-            $table->unsignedBigInteger('commande_id');
-            $table->foreign('commande_id')->references('id')->on('commandes');
+            $table->foreignId('commande_id')->constrained();            ;
             $table->integer('quantite');
-
 
         });
     }

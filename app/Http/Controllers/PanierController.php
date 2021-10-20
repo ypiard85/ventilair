@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Adresse;
+use App\Models\Promo;
 
 class PanierController extends Controller
 {
@@ -16,7 +19,8 @@ class PanierController extends Controller
      */
     public function index()
     {
-        return view('panier.index');
+        $promos = Promo::all();
+        return view('panier.index', compact('promos'));
     }
 
     /**
@@ -28,10 +32,19 @@ class PanierController extends Controller
     {
     }
 
-    public function validation()
+    public function validation(Request $request)
     {
+        $promos = Promo::all();
         $panier = session()->get('panier');
-        return view('panier.validation', compact('panier'));
+        $lastTotal = $request->input('lastTotal');
+        $id = Auth::user()->id;
+        $user = User::where('id', $id)->get();
+        $user->load('adresses');
+        return view('panier.validation', compact('panier', 'user', 'lastTotal', 'promos'));
+    }
+
+    public function postvalidation(Request $request, Adresse $adresse) {
+        
     }
 
 
