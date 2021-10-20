@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Models\User;
+=======
+use App\Models\Promo;
+use App\Models\Produit;
+use App\Models\Categorie;
+>>>>>>> yoann_v2
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
@@ -25,10 +31,14 @@ class UserController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $user = User::find(auth()->user()->id);
         $user->load('adresses');
         $adresse = $user->adresses->where('defaut', 1)->first();
         return view('users.index', compact('user', 'adresse'));
+=======
+
+>>>>>>> yoann_v2
     }
 
     /**
@@ -75,6 +85,7 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
+<<<<<<< HEAD
     /**
      * Update the specified resource in storage.
      *
@@ -90,6 +101,16 @@ class UserController extends Controller
             'pseudo' => ['required', 'string', 'max:25'],
             'email' => ['required', 'string', 'email', 'max:40'],
             'current_password' => ['required', new MatchOldPassword],
+=======
+        $categories = Categorie::all();
+
+        $campagnes = Promo::all();
+
+        return view('user.dashboard', [
+            'produits' => $produits,
+            'categories' => $categories,
+            'campagnes' => $campagnes
+>>>>>>> yoann_v2
         ]);
         $user->prenom = $request->input('firstname');
         $user->nom = $request->input('name');
