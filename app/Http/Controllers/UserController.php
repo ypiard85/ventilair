@@ -28,14 +28,10 @@ class UserController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
         $user = User::find(auth()->user()->id);
         $user->load('adresses');
         $adresse = $user->adresses->where('defaut', 1)->first();
         return view('users.index', compact('user', 'adresse'));
-=======
-
->>>>>>> yoann_v2
     }
 
     /**
