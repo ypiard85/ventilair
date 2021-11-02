@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    <form action="{{ route('campagnes.store') }}" method="post">
+    <form action="{{ route('promo.store') }}" method="post">
         @csrf
         @method('post')
 
@@ -27,7 +27,6 @@
                 <input type="text" name="reduction" class="form-control">
             </div>
         </div>
-        <button class="btn btn-success mt-3">Créer une campagne</button>
         <div class="accordion mt-5" id="accordionExample">
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingOne">
@@ -42,27 +41,26 @@
                         <thead>
                           <tr>
                             <th scope="col">Nom</th>
-                            <th scope="col">Image</th>
                             <th scope="col">Ajouter à cette promo</th>
                           </tr>
                         </thead>
                         <tbody>
                           @foreach($produits as $produit)
-                          <tr>
-                            <td>{{ $produit->nom }}</td>
-                            @foreach($produit->images as $image)
-                            <td><img src="{{ asset("./images/$image->name") }}" alt="titre" width="70"></td>
-                            <td>
-                                <input type="checkbox" name="product{{ $produit->id }}" value="{{ $produit->id }}">
-                            </td>
-                            @endforeach
-                          </tr>
+                            <tr>
+                              <td>{{ $produit->nom }}</td>
+                              <td>
+
+                                <input type="checkbox" value="{{ $produit->id }}" name="produit-{{ $produit->id }}">
+
+                              </td>
+                            </tr>
                           @endforeach
                         </tbody>
                     <table>
                 </div>
               </div>
         </div>
+        <button class="btn btn-success mt-3">Créer une promo</button>
     </form>
 
 </div>

@@ -122,12 +122,12 @@ class UserController extends Controller
 
         $categories = Categorie::all();
 
-        $campagnes = Promo::all();
+        $promo = Promo::all();
 
         return view('user.dashboard', [
             'produits' => $produits,
             'categories' => $categories,
-            'campagnes' => $campagnes
+            'promo' => $promo
         ]);
     }
 

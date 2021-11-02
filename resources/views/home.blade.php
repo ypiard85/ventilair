@@ -4,16 +4,6 @@
 <div class="container">
     @if($promos)
     <div class="promos">
-
-        @if(Auth::user())
-        <form action="{{ route('deleteuser', Auth::user() ) }}" method="post">
-            @csrf
-            <input name="user_id" type="text" value="{{ Auth::user()->id }}">
-            <button onclick="return confirm('etes vous sûr de vouloir supprimer votre profil')" >Supprimer l'utilisateur</button>
-        </form>
-        @endif
-
-
         <h1 class="text-center">Les promos du moments</h1>
         <h4 class="text-center">Du
             {{ \Carbon\Carbon::parse($promos->date_debut)->format('j F Y') }}

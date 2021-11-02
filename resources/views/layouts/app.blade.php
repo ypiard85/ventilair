@@ -35,7 +35,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a href="{{ route('campagnes.index') }}" class="nav-link">Campagnes</a>
+                            <a href="{{ route('promo.index') }}" class="nav-link">promo</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

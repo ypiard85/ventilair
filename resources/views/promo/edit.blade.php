@@ -47,7 +47,13 @@
                         <tr>
                           <td>{{ $produit->nom }}</td>
                           <td>
+<<<<<<< HEAD
                               <input type="checkbox" value="{{ $produit->id }}" name="produit-{{ $produit->id }}">
+=======
+
+                                <input type="checkbox" value="{{ $produit->id }}" name="produit-{{ $produit->id }}">
+
+>>>>>>> yoann_final
                           </td>
                         </tr>
                       @endforeach

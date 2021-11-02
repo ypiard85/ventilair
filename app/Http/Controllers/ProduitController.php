@@ -227,10 +227,9 @@ class ProduitController extends Controller
     public function AjoutImageProduit(Request $request)
     {
 
-
         $this->AddImage($request, $request->get('ajoutimageproduit'));
 
-        return back()->with('message','Produit modifier avec succès');
+        return back()->with('message','Image ajouter avec succès');
 
     }
 
