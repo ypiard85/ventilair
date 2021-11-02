@@ -65,8 +65,8 @@
       <table>
 
           <table class="table">
-            <h3>Campagnes promotionnelles</h3>
-            <a href="{{ route('campagnes.create') }}" class="me-2 btn btn-success">Ajouter</a>
+            <h3>promo promotionnelles</h3>
+            <a href="{{ route('promo.create') }}" class="me-2 btn btn-success">Ajouter</a>
             <thead>
               <tr>
                 <th scope="col">Nom</th>
@@ -75,13 +75,13 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($campagnes as $campagne)
+              @foreach($promo as $promo)
               <tr>
-                <td>{{ $campagne->nom }}</td>
-                <td>Du {{ $campagne->date_debut }} au {{ $campagne->date_fin }}</td>
+                <td>{{ $promo->nom }}</td>
+                <td>Du {{ $promo->date_debut }} au {{ $promo->date_fin }}</td>
                 <td>
-                  <a href="{{ route('campagnes.edit', $campagne ) }}" class="me-2">Modifier</a>
-                  <form action="{{ route('campagnes.destroy', $campagne ) }}" method="post">
+                  <a href="{{ route('promo.edit', $promo ) }}" class="me-2">Modifier</a>
+                  <form action="{{ route('promo.destroy', $promo ) }}" method="post">
                       @csrf
                       @method('delete')
                       <button type="submit" onclick="return confirm('Voulez vous supprimer ce produit ? ')">Supprimer</button>

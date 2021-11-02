@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PromoController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitController;
-use App\Http\Controllers\CampagneController;
 use App\Http\Controllers\CategorieController;
 
 /*
@@ -30,7 +30,7 @@ Route::get('/categorie', [ProduitController::class, 'categories' ] )->name('prod
 Route::post('/ajout/image/', [ProduitController::class, 'AjoutImageProduit' ] )->name('ajout_image_produit');
 
 
-Route::resource('campagnes', CampagneController::class);
+Route::resource('promo', PromoController::class);
 
 Route::get('populaires', [ProduitController::class, 'populaires'])->name('produits_populaires');
 

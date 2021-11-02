@@ -7,7 +7,7 @@
 
     <h1>Modification de "{{ $produit->nom }}" </h1>
 
-    <form action="{{ route('ajout_image_produit') }}" method="post">
+    <form action="{{ route('ajout_image_produit') }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('post')
         <div class="input-group hdtuto control-group lst increment" >
