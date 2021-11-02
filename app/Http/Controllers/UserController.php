@@ -78,7 +78,7 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
-<<<<<<< HEAD
+
     /**
      * Update the specified resource in storage.
      *
@@ -94,16 +94,7 @@ class UserController extends Controller
             'pseudo' => ['required', 'string', 'max:25'],
             'email' => ['required', 'string', 'email', 'max:40'],
             'current_password' => ['required', new MatchOldPassword],
-=======
-        $categories = Categorie::all();
 
-        $campagnes = Promo::all();
-
-        return view('user.dashboard', [
-            'produits' => $produits,
-            'categories' => $categories,
-            'campagnes' => $campagnes
->>>>>>> yoann_v2
         ]);
         $user->prenom = $request->input('firstname');
         $user->nom = $request->input('name');
