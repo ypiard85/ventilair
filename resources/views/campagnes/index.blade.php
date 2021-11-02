@@ -7,7 +7,7 @@
     @if($promos != null)
     @foreach($promos as $promo)
     <div class="row">
-            <div class="bg-success py-5 text-center">
+            <div class="alert alert-success text-center py-5">
                 <h3>{{ $promo->nom }}</h3>
             </div>
             <h4 class="text-center my-3">Du

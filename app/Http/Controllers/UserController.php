@@ -78,7 +78,7 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    /**
+     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -113,17 +113,6 @@ class UserController extends Controller
         return back()->with('message', 'Félicitations, informations modifiées');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function dashboard()
     {
 
@@ -140,5 +129,16 @@ class UserController extends Controller
             'categories' => $categories,
             'campagnes' => $campagnes
         ]);
+    }
+
+    public function deleteuser(User $user, Request $request){
+
+        $user = User::find($request->user_id);
+
+        $user->delete();
+
+
+        return redirect('/');
+
     }
 }

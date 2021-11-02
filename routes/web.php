@@ -45,7 +45,7 @@ Route::get('validationpanier' , [PanierController::class, 'validation'])->name('
 Route::get('/', [HomeController::class, 'index' ] )->name('homepage');
 
 
-Route::post('/deleteuser/{user}', [HomeController::class, 'deleteuser'] )->name('deleteuser');
+Route::post('/deleteuser/{user}', [UserController::class, 'deleteuser'] )->name('deleteuser');
 
 
 // Concernant les commandes
