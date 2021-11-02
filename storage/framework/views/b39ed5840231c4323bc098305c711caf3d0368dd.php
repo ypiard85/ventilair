@@ -24,8 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                    <?php echo e(config('app.name', 'Laravel')); ?>
-
+                    <img class="img-fluid" src="/images/ventilair-logo.png" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                     <span class="navbar-toggler-icon"></span>
@@ -36,7 +35,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a href="<?php echo e(route('campagnes.index')); ?>" class="nav-link">Campagnes</a>
+                            <a href="<?php echo e(route('promo.index')); ?>" class="nav-link">promo</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,7 +61,9 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="<?php echo e(route('user.index')); ?>">Profil</a>
+                                <a class="dropdown-item" href="<?php echo e(route('dashboard')); ?>">Dashboard</a>
                                 <a class="dropdown-item" href="<?php echo e(route('commande.index')); ?>">Mes commandes</a>
+
                                 <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -133,7 +134,7 @@
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">About us</a>
+              <a href="#!" class="text-white">Les produits</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -141,7 +142,7 @@
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">Products</a>
+              <a href="#!" class="text-white">Les promotions</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -149,7 +150,7 @@
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">Awards</a>
+              <a href="#!" class="text-white">Les plus populaires</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -157,7 +158,7 @@
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">Help</a>
+              <a href="#!" class="text-white">Les catégories</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -165,7 +166,7 @@
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">Contact</a>
+              <a href="#!" class="text-white">Mon compte</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -218,10 +219,7 @@
          class="text-center p-3"
          style="background-color: rgba(0, 0, 0, 0.2)"
          >
-      © 2020 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/"
-         >MDBootstrap.com</a
-        >
+      © 2021 VENTILAIR :
     </div>
     <!-- Copyright -->
   </footer>

@@ -4,16 +4,6 @@
 <div class="container">
     <?php if($promos): ?>
     <div class="promos">
-
-        <?php if(Auth::user()): ?>
-        <form action="<?php echo e(route('deleteuser', Auth::user() )); ?>" method="post">
-            <?php echo csrf_field(); ?>
-            <input name="user_id" type="text" value="<?php echo e(Auth::user()->id); ?>">
-            <button onclick="return confirm('etes vous sûr de vouloir supprimer votre profil')" >Supprimer l'utilisateur</button>
-        </form>
-        <?php endif; ?>
-
-
         <h1 class="text-center">Les promos du moments</h1>
         <h4 class="text-center">Du
             <?php echo e(\Carbon\Carbon::parse($promos->date_debut)->format('j F Y')); ?>
