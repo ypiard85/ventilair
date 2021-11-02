@@ -7,10 +7,10 @@ use App\Models\Promo;
 use App\Models\Produit;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\Password;
-use Illuminate\Support\Facades\Hash;
 use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 
 class UserController extends Controller
@@ -78,8 +78,7 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
-
-    /**
+     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -87,14 +86,13 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-    {   
+    {
         $request->validate([
             'firstname' => ['required', 'string', 'max:25'],
             'name' => ['required', 'string', 'max:25'],
             'pseudo' => ['required', 'string', 'max:25'],
             'email' => ['required', 'string', 'email', 'max:40'],
             'current_password' => ['required', new MatchOldPassword],
-
         ]);
         $user->prenom = $request->input('firstname');
         $user->nom = $request->input('name');
@@ -115,14 +113,32 @@ class UserController extends Controller
         return back()->with('message', 'Félicitations, informations modifiées');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function dashboard()
     {
-        //
+
+        $produits = Produit::all();
+
+        $produits->load('categorie');
+
+        $categories = Categorie::all();
+
+        $promo = Promo::all();
+
+        return view('user.dashboard', [
+            'produits' => $produits,
+            'categories' => $categories,
+            'promo' => $promo
+        ]);
+    }
+
+    public function deleteuser(User $user, Request $request){
+
+        $user = User::find($request->user_id);
+
+        $user->delete();
+
+
+        return redirect('/');
+
     }
 }

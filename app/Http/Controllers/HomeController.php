@@ -56,15 +56,4 @@ class HomeController extends Controller
         ]);
 
     }
-
-    public function deleteuser(User $user, Request $request){
-
-        $user = User::find($request->user_id);
-
-        $user->delete();
-
-
-        return redirect('/');
-
-    }
 }

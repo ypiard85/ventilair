@@ -20,6 +20,13 @@
             <a href="{{ route('user.edit', $user) }}" class="mt-3 btn btn-primary">
                 {{ __('Modifier mes informations') }}
             </a>
+            @if(Auth::user())
+            <form class="mt-4 d-flex" action="{{ route('deleteuser', Auth::user() ) }}" method="post">
+                @csrf
+                <input name="user_id" type="hidden" class="form-control" value="{{ Auth::user()->id }}">
+                <button class="btn btn-danger" onclick="return confirm('etes vous sûr de vouloir supprimer votre profil')" >Supprimer l'utilisateur</button>
+            </form>
+            @endif
         </div>
     </div>
     @endsection

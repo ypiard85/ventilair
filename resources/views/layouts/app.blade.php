@@ -35,7 +35,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a href="{{ route('campagnes.index') }}" class="nav-link">Campagnes</a>
+                            <a href="{{ route('promo.index') }}" class="nav-link">promo</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,7 +60,9 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('user.index') }}">Profil</a>
+                                <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
                                 <a class="dropdown-item" href="{{ route('commande.index') }}">Mes commandes</a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
