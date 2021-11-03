@@ -81,7 +81,7 @@ class CommandeController extends Controller
     public function show(Commande $commande)
     {
         $commande->load('produits');
-        return view('commandes\show', compact('commande'));
+        return view('commandes.show', compact('commande'));
     }
 
     /**

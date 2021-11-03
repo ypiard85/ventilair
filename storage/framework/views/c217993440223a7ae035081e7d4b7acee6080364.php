@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('content'); ?>
-dd
+
 
 <section class="mt-5 container">
             <table class="col-md-12 table table-hover">
@@ -13,13 +13,10 @@ dd
                         <th scope="col">Quantité</th>
                     </tr>
                 </thead>
-                <?php $__currentLoopData = $commandesdetails; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $commandes): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <?php echo e(dd($commandes)); ?>
-
-                <h2>Commande n°<?php echo e($commandes->numero); ?> pour un montant de <?php echo e($commandes->prix); ?>€ TTC</h2>
+                <h2>Commande n°<?php echo e($commande->numero); ?> pour un montant de <?php echo e($commande->prix); ?>€ TTC</h2>
 
                     <tbody>
-                    <?php $__currentLoopData = $commandes->produits; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $produit): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $commande->produits; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $produit): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
                             <td><?php echo e(($produit->nom)); ?></td>
                             <td><?php echo e(($produit->prix)); ?></td>
@@ -31,9 +28,6 @@ dd
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                     </tbody>
-                    
-
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     
                     
             </table>
